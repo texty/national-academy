@@ -23,15 +23,15 @@ var valuesForXAxis  = [parseDate("2006-01-01"), parseDate("2011-01-01"), parseDa
 // Define the axes
 var xAxis = d3.svg.axis().scale(x)
     .orient("bottom")
-    // .ticks(10)
-    // .tickValues(valuesForXAxis)
+    .ticks(10)
+    .tickValues(valuesForXAxis)
     // .tickSize(-chartHeight)
     ;
 
 var yAxis = d3.svg.axis().scale(y)
     .orient("left")
-    // .ticks(5)
-    // .tickSize(10)
+    .ticks(5)
+    .tickSize(10)
     ;
 
 // Define the line
@@ -172,9 +172,17 @@ function updateData() {
             d.percent = +d.percent;
         });
 
+        var x = d3.time.scale().range([0, chartWidth]);
+
+        var xAxis = d3.svg.axis().scale(x)
+            .orient("bottom")
+            .ticks(10)
+            .tickValues(valuesForXAxis);
+
         x.domain(d3.extent(data, function (d) {
             return d.year;
         }));
+
         y.domain([0, d3.max(data, function (d) {
             return d.percent;
         })]);
@@ -183,6 +191,10 @@ function updateData() {
         ageChart.select(".y.axis")
             .duration(750)
             .call(yAxis);
+
+        ageChart.select(".x.axis")
+            .duration(750)
+            .call(xAxis);
 
 
 
@@ -243,10 +255,15 @@ function updateData() {
 
             ageChart.select("#yAxisHint").duration(750).text("осіб");
 
-
-
-            ageChart.selectAll(".twotwo").style("opacity","1");
             ageChart.selectAll(".dot").transition().duration(300).style("opacity","0");
+
+
+            ageChart.select("#agesvg > g > g:nth-child(" + 1 + ") > path").style("opacity","1");
+            ageChart.select("#agesvg > g > g:nth-child(" + 2 + ") > path").style("opacity","1");
+            ageChart.select("#agesvg > g > g:nth-child(" + 1 + ") > text").style("opacity","1");
+            ageChart.select("#agesvg > g > g:nth-child(" + 2 + ") > text").style("opacity","1");
+            // ageChart.selectAll(".ageChartLabels").transition().duration(300).style("opacity","1");
+
 
         });
 

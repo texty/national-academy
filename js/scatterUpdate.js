@@ -60,6 +60,9 @@ d3.csv("data/menWomen.csv", function (error, data) {
     var scatter = d3.select("#targetG");
 
     ageChart.selectAll(".line").transition().duration(300).style("opacity","0");
+    ageChart.selectAll(".ageChartLabels").transition().duration(300).style("opacity","0");
+
+
     scatter.selectAll(".dot")
         .data(data)
         .enter().append("circle")
@@ -105,7 +108,25 @@ d3.csv("data/menWomen.csv", function (error, data) {
         })
         .attr("cy", function (d) {
             return y(d.menScientists);
-        })
+        });
+
+    if ($('#bla').length === 0) {
+        scatter.append("text")
+            .attr("x", x(218))
+            .attr("y", y(294))
+            .attr("id", "bla")
+            .style("fill", "grey")
+            .text("наведіть мишею на будь-яку точку");
+    }
+    else {
+        ageChart.select("#bla")
+            .duration(500)
+            .attr("x", x(218))
+            .attr("y", y(294))
+        ;
+    }
+
+
 
 });
 }
@@ -170,7 +191,13 @@ function scatterSmall() {
             })
             .attr("cy", function (d) {
                 return y(d.menScientists);
-            })
+            });
+
+        ageChart.selectAll("#bla")
+            .duration(500)
+            .attr("x", x(41))
+            .attr("y", y(59))
+            ;
 
     });
 }
