@@ -1,0 +1,107 @@
+body {
+  font: 10px sans-serif;
+}
+
+
+/* -------------    Графік по фінансам  ----------   */
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.rect {
+  /*fill: steelblue;*/
+  width: 5px;
+}
+
+#finance-chart > .x.axis path {
+  display: none;
+}
+
+.category.category-natural-science {
+  margin-left: 100px;
+}
+
+div.tooltip {
+  position: absolute;
+  min-width: 80px;
+  max-width: 100px;
+  height: auto;
+  padding: 2px;
+  font: 9px sans-serif;
+  background: white;
+  border: 0px;
+  pointer-events: none;
+  z-index:6;
+}
+
+.annotation circle {
+  fill: none;
+  stroke: darkslategrey;
+}
+
+.annotation path {
+  fill: none;
+  stroke: darkslategrey;
+  shape-rendering: crispEdges;
+}
+
+.annotation text {
+  text-shadow: -2px 0 2px #fff,
+  0 2px 2px #fff,
+  2px 0 2px #fff,
+  0 -2px 2px #fff;
+}
+
+.sum {
+  font-weight: 800;
+}
+
+
+/* Age chart*/
+.line{
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+//#agesvg > g > g.y.axis > path.domain,
+//#agesvg > g > g:nth-child(14) > path{
+//  fill: none;
+//  stroke-width: 0;
+//}
+//
+//#agesvg > g > g.x.axis > path.domain {
+//
+//}
+//
+//
+//.x.axis path,
+//.x.axis > g.tick > line {
+//  fill: none;
+//  stroke: #ccc;
+//  stroke-dasharray: 2px 3px;
+//  shape-rendering: crispEdges;
+//}
+//
+//#agesvg > g > g.x.axis > g:nth-child(1) > line {
+//  display:none;
+//}
+
+.ageChartLabels {
+  margin-left: 10px;
+}
+
+
+
+
