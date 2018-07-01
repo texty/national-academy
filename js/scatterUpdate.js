@@ -63,6 +63,7 @@ d3.csv("data/menWomen.csv", function (error, data) {
     ageChart.selectAll(".ageChartLabels").transition().duration(300).style("opacity","0");
 
 
+
     scatter.selectAll(".dot")
         .data(data)
         .enter().append("circle")
@@ -108,7 +109,8 @@ d3.csv("data/menWomen.csv", function (error, data) {
         })
         .attr("cy", function (d) {
             return y(d.menScientists);
-        });
+        })
+        .style("opacity", "0.5");
 
     if ($('#bla').length === 0) {
         scatter.append("text")
