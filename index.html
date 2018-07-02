@@ -11,14 +11,56 @@
 </head>
 
 <body>
-<button style="margin-left: 50px" onclick="updateData()">scrollytelling step 2</button>
-<button style="margin-left: 50px" onclick="scatter()">scrollytelling step 3</button>
-<button style="margin-left: 50px" onclick="scatterSmall()">scrollytelling step 4</button>
+<h1>Національна Академія Наук України</h1>
 
 
 
 
-<div id="age-chart"></div>
+<div class="content">
+
+
+    <div id="scroll">
+        <div id="step1" class="step">
+        <h2>Lorem ipsum</h2>
+       <p> Lorem ipsum, ligula adipiscing ut, sagittis orci urna eget eros vivamus nulla lorem ultricies urna, sit justo odio fusce nibh urna auctor in auctor malesuada. Fusce nam quam sagittis gravida, auctor leo eget ut, lectus odio at elementum nec pellentesque nam, proin risus, mattis sodales. Non diam maecenas sapien vivamus nec, sapien auctor magna enim porttitor sit elementum ultricies auctor. Sagittis lectus adipiscing eu duis non — porttitor, eros mattis integer tempus — justo, urna adipiscing curabitur. Elementum tempus mauris fusce magna — ut integer sodales adipiscing morbi ligula metus pharetra, porta donec vulputate nec justo at odio integer. Metus eu cursus malesuada urna in gravida tempus et vulputate proin quisque rutrum quam porttitor vivamus quam commodo lectus. Tellus elementum non in ornare fusce nec nulla urna non auctor amet at ipsum et, a adipiscing metus amet ipsum ligula.</p>
+        </div>
+
+    <div id="step2" class="step">
+        <h2>Lorem ipsum</h2>
+        <p> Lorem ipsum, ligula adipiscing ut, sagittis orci urna eget eros vivamus nulla lorem ultricies urna, sit justo odio fusce nibh urna auctor in auctor malesuada. Fusce nam quam sagittis gravida, auctor leo eget ut, lectus odio at elementum nec pellentesque nam, proin risus, mattis sodales. Non diam maecenas sapien vivamus nec, sapien auctor magna enim porttitor sit elementum ultricies auctor. Sagittis lectus adipiscing eu duis non — porttitor, eros mattis integer tempus — justo, urna adipiscing curabitur. Elementum tempus mauris fusce magna — ut integer sodales adipiscing morbi ligula metus pharetra, porta donec vulputate nec justo at odio integer. Metus eu cursus malesuada urna in gravida tempus et vulputate proin quisque rutrum quam porttitor vivamus quam commodo lectus. Tellus elementum non in ornare fusce nec nulla urna non auctor amet at ipsum et, a adipiscing metus amet ipsum ligula.</p>
+</div>
+
+<div id="step3" class="step">
+        <h2>Lorem ipsum</h2>
+        <p> Lorem ipsum, ligula adipiscing ut, sagittis orci urna eget eros vivamus nulla lorem ultricies urna, sit justo odio fusce nibh urna auctor in auctor malesuada. Fusce nam quam sagittis gravida, auctor leo eget ut, lectus odio at elementum nec pellentesque nam, proin risus, mattis sodales. Non diam maecenas sapien vivamus nec, sapien auctor magna enim porttitor sit elementum ultricies auctor. Sagittis lectus adipiscing eu duis non — porttitor, eros mattis integer tempus — justo, urna adipiscing curabitur. Elementum tempus mauris fusce magna — ut integer sodales adipiscing morbi ligula metus pharetra, porta donec vulputate nec justo at odio integer. Metus eu cursus malesuada urna in gravida tempus et vulputate proin quisque rutrum quam porttitor vivamus quam commodo lectus. Tellus elementum non in ornare fusce nec nulla urna non auctor amet at ipsum et, a adipiscing metus amet ipsum ligula.</p>
+</div>
+
+<div id="step4" class="step">
+        <h2>Lorem ipsum</h2>
+        <p> Lorem ipsum, ligula adipiscing ut, sagittis orci urna eget eros vivamus nulla lorem ultricies urna, sit justo odio fusce nibh urna auctor in auctor malesuada. Fusce nam quam sagittis gravida, auctor leo eget ut, lectus odio at elementum nec pellentesque nam, proin risus, mattis sodales. Non diam maecenas sapien vivamus nec, sapien auctor magna enim porttitor sit elementum ultricies auctor. Sagittis lectus adipiscing eu duis non — porttitor, eros mattis integer tempus — justo, urna adipiscing curabitur. Elementum tempus mauris fusce magna — ut integer sodales adipiscing morbi ligula metus pharetra, porta donec vulputate nec justo at odio integer. Metus eu cursus malesuada urna in gravida tempus et vulputate proin quisque rutrum quam porttitor vivamus quam commodo lectus. Tellus elementum non in ornare fusce nec nulla urna non auctor amet at ipsum et, a adipiscing metus amet ipsum ligula.</p>
+</div>
+
+        <div id="step5" class="step">
+        <h2>Lorem ipsum</h2>
+        <p> Lorem ipsum, ligula adipiscing ut, sagittis orci urna eget eros vivamus nulla lorem ultricies urna, sit justo odio fusce nibh urna auctor in auctor malesuada. Fusce nam quam sagittis gravida, auctor leo eget ut, lectus odio at elementum nec pellentesque nam, proin risus, mattis sodales. Non diam maecenas sapien vivamus nec, sapien auctor magna enim porttitor sit elementum ultricies auctor. Sagittis lectus adipiscing eu duis non — porttitor, eros mattis integer tempus — justo, urna adipiscing curabitur. Elementum tempus mauris fusce magna — ut integer sodales adipiscing morbi ligula metus pharetra, porta donec vulputate nec justo at odio integer. Metus eu cursus malesuada urna in gravida tempus et vulputate proin quisque rutrum quam porttitor vivamus quam commodo lectus. Tellus elementum non in ornare fusce nec nulla urna non auctor amet at ipsum et, a adipiscing metus amet ipsum ligula.</p>
+</div>
+    </div>
+
+    <div id="charts">
+        <button style="margin-left: 50px" onclick="updateData()">scrollytelling step 2</button>
+        <button style="margin-left: 50px" onclick="scatter()">scrollytelling step 3</button>
+        <button style="margin-left: 50px" onclick="scatterSmall()">scrollytelling step 4</button>
+
+
+
+
+        <div id="age-chart"></div>
+    </div>
+
+
+
+</div>
+
 
 <!--<div id="gender-scatter"></div>-->
 <!-- Libraries -->
@@ -40,6 +82,45 @@
 
 <script>
 
+    $.fn.isInViewport = function() {
+        var elementTop = $(this).offset().top;
+        var elementBottom = elementTop + $(this).outerHeight();
+
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
+
+    $("#scroll").on('scroll', function() {
+
+            if ($("#step2").isInViewport()) {
+             console.log("Yes");
+                updateData()
+            } else {
+                console.log("No");
+            }
+        });
+
+    $("#scroll").on('scroll', function() {
+
+        if ($("#step3").isInViewport()) {
+            console.log("Yes");
+            scatter()
+        } else {
+            console.log("No");
+        }
+    });
+
+    $("#scroll").on('scroll', function() {
+
+        if ($("#step4").isInViewport()) {
+            console.log("Yes");
+            scatterSmall()
+        } else {
+            console.log("No");
+        }
+    });
 
 
 

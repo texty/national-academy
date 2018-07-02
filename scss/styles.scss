@@ -3,6 +3,29 @@ body {
 }
 
 
+.content {
+  display:grid;
+  grid-template-columns: 30% 70%;
+}
+
+#scroll {
+  height:100vh;
+  overflow:scroll;
+  grid-column: 1/2;
+}
+
+.step {
+  height:100vh;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+p {
+  font-size: 12px;
+}
+
 /* -------------    Графік по фінансам  ----------   */
 
 .axis path,
