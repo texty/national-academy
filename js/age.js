@@ -9,14 +9,14 @@ var chartMargin = {
     left: window.innerWidth / 20
 };
 
-var chartWidth = (window.innerWidth / 2) - chartMargin.left - chartMargin.right,
-    chartHeight = (window.innerWidth / 2) - chartMargin.top - chartMargin.bottom;
+var chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right,
+    chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
 
 var parseDate = d3.time.format("%Y-%m-%d").parse;
 
 // Set the ranges
 var x = d3.time.scale().range([0, chartWidth]);
-var y = d3.scale.linear().range([chartHeight, 0]);
+var y = d3.scale.linear().range([chartHeight, 20]);
 
 var valuesForXAxis  = [parseDate("2006-01-01"), parseDate("2011-01-01"), parseDate("2012-01-01"), parseDate("2013-01-01"), parseDate("2014-01-01"), parseDate("2015-01-01"), parseDate("2016-01-01"), parseDate("2017-01-01")];
 
@@ -189,11 +189,11 @@ function updateData() {
 
 
         ageChart.select(".y.axis")
-            .duration(750)
+            .duration(durationTime)
             .call(yAxis);
 
         ageChart.select(".x.axis")
-            .duration(750)
+            .duration(durationTime)
             .call(xAxis);
 
 
@@ -225,7 +225,7 @@ function updateData() {
 
 
             ageChart.select("#agesvg > g > g:nth-child(" + (i + 1) +") > path")
-                .duration(750)
+                .duration(durationTime)
                 .attr("d", line(data.filter(function (v) {
                     return v.sex === d.key;
                 })))
@@ -233,7 +233,7 @@ function updateData() {
 
 
             ageChart.select("#agesvg > g > g:nth-child(" + (i + 1) +") > text")
-                .duration(750)
+                .duration(durationTime)
                 .text(d.key)
                 // .attr("fill", d.color)
                 .attr("transform", function () {
@@ -253,9 +253,9 @@ function updateData() {
 
 
 
-            ageChart.select("#yAxisHint").duration(750).text("осіб");
+            ageChart.select("#yAxisHint").duration(durationTime).text("осіб");
 
-            ageChart.selectAll(".dot").transition().duration(300).style("opacity","0");
+            ageChart.selectAll(".dot").transition().duration(durationTime).style("opacity","0");
 
 
             ageChart.select("#agesvg > g > g:nth-child(" + 1 + ") > path").style("opacity","1");

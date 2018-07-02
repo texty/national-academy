@@ -4,21 +4,40 @@ body {
 
 .content {
   display: grid;
-  grid-template-columns: 30% 70%; }
+  grid-template-columns: 40% 60%;
+  position: sticky;
+  top: 0;
+  left: 0; }
 
 #scroll {
   height: 100vh;
-  overflow: scroll;
+  overflow-y: hidden;
+  overflow-x: hidden;
   grid-column: 1/2; }
 
 .step {
   height: 100vh; }
 
 h1 {
-  font-size: 40px; }
+  font-size: 40px;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 50px; }
+
+h2 {
+  font-size: 25px; }
+
+h3 {
+  font-size: 25px;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 5vh; }
 
 p {
-  font-size: 12px; }
+  font-size: 18px;
+  line-height: 1.6;
+  width: 80%; }
 
 /* -------------    Графік по фінансам  ----------   */
 .axis path,
@@ -79,5 +98,8 @@ div.tooltip {
 
 .ageChartLabels {
   margin-left: 10px; }
+
+#finance-chart {
+  grid-column: 2/3; }
 
 /*# sourceMappingURL=styles.css.map */

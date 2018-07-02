@@ -48,19 +48,19 @@ d3.csv("data/menWomen.csv", function (error, data) {
 
     // ageChart.selectAll("#agesvg > g > g.y.axis > g.tick").style("opacity", 0);
     ageChart.select(".y.axis")
-        .duration(750)
+        .duration(durationTime)
         .call(yAxis);
 
     ageChart.select(".x.axis")
-        .duration(750)
+        .duration(durationTime)
         .call(xAxis);
 
 
 
     var scatter = d3.select("#targetG");
 
-    ageChart.selectAll(".line").transition().duration(300).style("opacity","0");
-    ageChart.selectAll(".ageChartLabels").transition().duration(300).style("opacity","0");
+    ageChart.selectAll(".line").transition().duration(10).style("opacity","0");
+    ageChart.selectAll(".ageChartLabels").transition().duration(durationTime).style("opacity","0");
 
 
 
@@ -103,7 +103,7 @@ d3.csv("data/menWomen.csv", function (error, data) {
 
 
     ageChart.selectAll(".dot")
-        .duration(750)
+        .duration(durationTime)
         .attr("cx", function (d) {
             return x(d.womenScientists);
         })
@@ -177,17 +177,17 @@ function scatterSmall() {
 
         // ageChart.selectAll("#agesvg > g > g.y.axis > g.tick").style("opacity", 0);
         ageChart.select(".y.axis")
-            .duration(750)
+            .duration(durationTime)
             .call(yAxis);
 
         ageChart.select(".x.axis")
-            .duration(750)
+            .duration(durationTime)
             .call(xAxis);
 
         var scatter = d3.select("#targetG");
 
         ageChart.selectAll(".dot")
-            .duration(750)
+            .duration(durationTime)
             .attr("cx", function (d) {
                 return x(d.womenScientists);
             })
@@ -196,7 +196,7 @@ function scatterSmall() {
             });
 
         ageChart.selectAll("#bla")
-            .duration(500)
+            .duration(durationTime)
             .attr("x", x(41))
             .attr("y", y(59))
             ;
