@@ -1,5 +1,9 @@
+$background: #faf1ff;
+
 body {
   font: 10px sans-serif;
+  color: #4b4b4b;
+  background-color: $background;
 }
 
 
@@ -27,15 +31,16 @@ h1 {
   width:70%;
   margin:0 auto;
   text-align: center;
-  margin-bottom:50px;
+  margin-bottom:20px;
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 20px;
+  width:70%;
 }
 
 h3 {
-  font-size: 25px;
+  font-size: 20px;
   width:70%;
   margin:0 auto;
   margin-bottom:5vh;
@@ -76,10 +81,10 @@ div.tooltip {
   height: auto;
   padding: 2px;
   font: 9px sans-serif;
-  background: white;
+  background: #faf1ff;
   border: 0px;
   pointer-events: none;
-  z-index:6;
+  z-index:11;
 }
 
 .annotation circle {
@@ -119,28 +124,7 @@ div.tooltip {
   shape-rendering: crispEdges;
 }
 
-//#agesvg > g > g.y.axis > path.domain,
-//#agesvg > g > g:nth-child(14) > path{
-//  fill: none;
-//  stroke-width: 0;
-//}
-//
-//#agesvg > g > g.x.axis > path.domain {
-//
-//}
-//
-//
-//.x.axis path,
-//.x.axis > g.tick > line {
-//  fill: none;
-//  stroke: #ccc;
-//  stroke-dasharray: 2px 3px;
-//  shape-rendering: crispEdges;
-//}
-//
-//#agesvg > g > g.x.axis > g:nth-child(1) > line {
-//  display:none;
-//}
+
 
 .ageChartLabels {
   margin-left: 10px;
@@ -151,5 +135,43 @@ div.tooltip {
 }
 
 
+
+.modal {
+  display: block;
+  opacity:0;
+  position: fixed;
+  z-index: 10;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow:auto;
+  //background-color: #e0e0e0;
+  height: 100vh;
+  pointer-events: none;
+}
+
+
+.modal-content {
+  background-color: #faf1ff;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #494949;
+  width: 90%;
+}
+
+.close {
+  color: #040404;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #949494;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 

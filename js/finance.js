@@ -1,7 +1,7 @@
 /**
  * Created by yevheniia on 30.06.18.
  */
-function financechart() {
+
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
@@ -86,7 +86,7 @@ function financechart() {
             .orient("left")
             .tickFormat(d3.format(".2s"));
 
-        var svg = d3.select("body").append("svg")
+        var svg = d3.select(".modal-content").append("svg")
             .attr("id", "finance-chart")
             .attr("width", width - margin.left - margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -352,7 +352,7 @@ function financechart() {
             }
         });
     }
-}
+
 
 
 

@@ -115,7 +115,16 @@ d3.csv("data/age.csv", function(error, data) {
         .attr("class", "x axis")
         .style("display", "block")
         .attr("transform", "translate(0," + chartHeight + ")")
-        .call(xAxis);
+        .call(xAxis)
+        .append("text")
+        .attr("id", "xAxisHint")
+        .attr("transform",
+            "translate(" + (chartWidth + 20) + " ," +
+            (0) + ")")
+        .style("text-anchor", "middle")
+        .style("fill", "black")
+        .text("")
+    ;
 
     // Add the Y Axis
     // ageChart.append("g")
@@ -213,15 +222,14 @@ function updateData() {
         dataNest.forEach(function (d, i) {
 
 
-            ageChart.select("#agesvg > g > g:nth-child(3) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(4) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(5) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(6) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(7) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(8) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(9) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(10) > text").remove();
-            ageChart.select("#agesvg > g > g:nth-child(11) > text").remove();
+            ageChart.select("#agesvg > g > g:nth-child(3) > text").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(4) > text").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(5) > text").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(6) > text").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(7) > text").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(8) > text").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(9) > text").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(10) > text").style("display", "none");
 
 
             ageChart.select("#agesvg > g > g:nth-child(" + (i + 1) +") > path")
@@ -242,18 +250,20 @@ function updateData() {
                     return "translate(" + x(xx) + "," + y(yy) + ")";
                 });
 
-            ageChart.select("#agesvg > g > g:nth-child(3) > path").remove();
-            ageChart.select("#agesvg > g > g:nth-child(4) > path").remove();
-            ageChart.select("#agesvg > g > g:nth-child(5) > path").remove();
-            ageChart.select("#agesvg > g > g:nth-child(6) > path").remove();
-            ageChart.select("#agesvg > g > g:nth-child(7) > path").remove();
-            ageChart.select("#agesvg > g > g:nth-child(8) > path").remove();
-            ageChart.select("#agesvg > g > g:nth-child(9) > path").remove();
-            ageChart.select("#agesvg > g > g:nth-child(10) > path").remove();
+            ageChart.select("#agesvg > g > g:nth-child(3) > path").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(4) > path").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(5) > path").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(6) > path").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(7) > path").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(8) > path").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(9) > path").style("display", "none");
+            ageChart.select("#agesvg > g > g:nth-child(10) > path").style("display", "none");
 
 
 
             ageChart.select("#yAxisHint").duration(durationTime).text("осіб");
+            ageChart.select("#xAxisHint").duration(durationTime).text("");
+
 
             ageChart.selectAll(".dot").transition().duration(durationTime).style("opacity","0");
 
@@ -276,4 +286,5 @@ function updateData() {
 }
 
 
-d3.select("#agesvg > g > g.x.axis > g.tick:nth-child(1) > text").remove();
+// d3.select("#agesvg > g > g.x.axis > g.tick:nth-child(1) > text").remove();
+

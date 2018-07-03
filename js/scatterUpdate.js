@@ -128,6 +128,11 @@ d3.csv("data/menWomen.csv", function (error, data) {
         ;
     }
 
+    ageChart.select("#yAxisHint").duration(durationTime).text("чоловіків");
+    ageChart.select("#xAxisHint").duration(durationTime).text("жінок");
+
+
+
 
 
 });
