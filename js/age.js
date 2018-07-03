@@ -9,6 +9,8 @@ var chartMargin = {
     left: window.innerWidth / 20
 };
 
+var color = d3.scale.category10();
+
 var chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right,
     chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
 

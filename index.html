@@ -29,14 +29,14 @@
 
     <div id="step2" class="step">
         <h2>Чисельність дослідників НАНУ за статями</h2>
-        <p>В закладах НАНУ дослідників більше ніж дослідниць. З чим це повʼязано...</p>
+        <p>В закладах НАНУ дослідників більше ніж дослідниць. З чим це повʼязано (коментар Булкіна)</p>
         <button><a href="#step3" id="toStep3">Далі</a></button>
 
     </div>
 
 <div id="step3" class="step">
         <h2>Кількість дослідників і дослідниць у закладах НАНУ (2015 р.)</h2>
-        <p>Як видно з графіку, чоловіки переважають майже у всіх закладах НАНУ. Пропогуємо Вам дослідити скільки дослідників і дослідниць працює в тому чи чи іншому закладі. Наведіть мишею на будь-яку точку і Ви побачите назву закладу і гендерний розподіл працівників-науковців. </p>
+        <p>Як видно з графіку, чоловіки переважають у великих закладах НАНУ. Пропонуємо Вам дослідити скільки дослідників і дослідниць працює в тому чи чи іншому закладі. Наведіть мишею на будь-яку точку і Ви побачите назву закладу і гендерний розподіл працівників-науковців. </p>
     <button><a href="#step4" id="toStep4">Наблизити</a></button>
 
 </div>
@@ -49,7 +49,7 @@
 </div>
 
 <div id="step5" class="step">
-            <h2>Кількість теоретичних і прикладних досліджень у закладах НАНУ</h2>
+            <h2>Співвідношення теоретичних і прикладних досліджень у закладах НАНУ (2015 р.)</h2>
             <p> Lorem ipsum, ligula adipiscing ut, sagittis orci urna eget eros vivamus nulla lorem ultricies urna, sit justo odio fusce nibh urna auctor in auctor malesuada. Fusce nam quam sagittis gravida.</p>
             <button onclick="showFinance()">Фінансування</button>
             <button><a href="#step6" id="toStep6">Далі</a></button>
@@ -86,7 +86,7 @@
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
-
+<button onclick="totalFinance()">Загальне фінансування</button>
     </div>
 </div>
 
@@ -240,7 +240,14 @@
         }
     });
 
+//    $("#scroll").scroll(function(){
+//        if (isInView($('#step5'))) {
+//            //fire whatever you what
+//            scatterFinance();
+//        }
+//    });
 
+//
 
 </script>
 

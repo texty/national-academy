@@ -151,24 +151,6 @@
 
             .style("margin-left", "390px");
 
-//    var defect_label = defect_g.selectAll(".defect-label")
-//            .data(function(d) {
-//                return [d];
-//            })
-//            .enter().append("text")
-//            .attr("class", function(d) {
-//                console.log(d)
-//                return 'defect-label defect-label-' + d.name;
-//            })
-//            .attr("transform", function(d) {
-//                var x_label = x_category((x_defect.rangeBand() + barPadding) / 2);
-//                var y_label = height + 10;
-//                return "translate(" + x_label + "," + y_label + ")";
-//            })
-//            .text(function(d) {
-//                return d.name;
-//            })
-//            .attr('text-anchor', 'middle');
 
 
         var rects = defect_g.selectAll('.rect')
@@ -268,6 +250,9 @@
         ;
 
 
+
+
+
         defect_g.selectAll('line')
             .data(function (d) {
                 return [d];
@@ -307,10 +292,11 @@
 
         svg.append("text")
             .attr("y", 50)
+            .attr("id", "financeTitle")
             .style("font-size", "18px")
             .style("letter-spacing", "1px")
             .style("font-weight", "bold")
-            .text("Питоме фінансування на робітника")
+            .text("Питоме фінансування на робітника (2015 р.)")
         ;
 
 
@@ -325,33 +311,208 @@
 
     });
 
-    function wrap(text, width) {
-        text.each(function () {
-            var text = d3.select(this),
-            // words = text.text().split(/\s+/).reverse(),
-                words = text.text().split(/\s+/).reverse(),
-                word,
-                line = [],
-                lineNumber = 0,
-                lineHeight = 1.1, // ems
-                y = text.attr("y"),
-                dy = parseFloat(text.attr("dy")),
-                tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
-            while (word = words.pop()) {
-                line.push(word);
-                tspan.text(line.join(" "));
-                if (tspan.node().getComputedTextLength() > width) {
-                    line.pop();
-                    tspan.text(line.join(" "));
-                    line = [word];
-                    tspan = text.append("tspan")
-                        .attr("x", 0).attr("y", y)
-                        .attr("dy", ++lineNumber * lineHeight + dy + "em")
-                        .text(word);
-                }
-            }
+
+
+
+
+function totalFinance() {
+    var svg = d3.select("#finance-chart").transition();
+
+    d3.csv("data/nanuTotalFinancing.csv", function (error, myData) {
+        myData.forEach(function (d) {
+            d.sum = +d.sum;
+            d.perPerson = +d.perPerson;
         });
-    }
+
+        myData.sort(function (a, b) {
+            return d3.descending(a.perPerson, b.perPerson);
+        });
+
+
+
+        var data = d3.nest()
+            .key(function (d) {
+                return d.group
+            })
+            .entries(myData);
+
+
+        var rangeBands = [];
+        var cummulative = 0;
+        data.forEach(function (val, i) {
+            val.cummulative = cummulative;
+            cummulative += val.values.length + 3;
+            val.values.forEach(function (values) {
+                values.parentKey = val.name;
+                rangeBands.push(i);
+            })
+        });
+
+
+        console.log(data);
+//    console.log(nestedData);
+
+        var x_category = d3.scale.linear()
+            .range([10, width / 1.3]);
+
+
+        var x_defect = d3.scale.ordinal().domain(rangeBands).rangeRoundBands([0, width], .1);
+        var x_category_domain = x_defect.rangeBand() * rangeBands.length;
+        x_category.domain([0, x_category_domain]);
+
+        var y = d3.scale.linear()
+            .range([height, 100]);
+
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .tickFormat(d3.format(".2s"));
+
+
+
+        y.domain([0, d3.max(data, function (cat) {
+            return d3.max(cat.values, function (def) {
+                return def.sum * 1.5;
+            });
+        })]);
+
+
+
+
+        svg.select(".y.axis")
+            .duration(durationTime)
+            .call(yAxis);
+
+        svg.select(".x.axis")
+            .duration(durationTime)
+            .call(xAxis);
+
+
+
+        var category_g = svg.selectAll(".category");
+        category_g.duration(740)
+            .attr("transform", function (d) {
+                return "translate(" + x_category((d.cummulative * x_defect.rangeBand()) + 5) + ",0)";
+            })
+            .attr("fill", function (d) {
+                return color[d.key];
+            });
+
+        var category_label = category_g.selectAll(".category-label");
+        category_label.duration(740)
+            .attr("class", function (d) {
+                console.log(d)
+                return 'category-label category-label-' + d.group;
+            })
+            .attr("transform", function (d) {
+                var x_label = x_category((d.values.length * x_defect.rangeBand() + barPadding) / 2);
+                var y_label = height + 30;
+                return "translate(" + x_label + "," + y_label + ")";
+            })
+            .text(function (d) {
+                return d.key;
+            })
+            .attr('text-anchor', 'middle');
+
+        var defect_g = category_g.selectAll(".defect");
+        defect_g.duration(740)
+            .attr("class", function (d) {
+                return 'defect defect ' + d.group;
+            })
+            .attr("transform", function (d, i) {
+                return "translate(" + x_category((i * x_defect.rangeBand())) + ",0)";
+            })
+
+            .style("margin-left", "390px");
+
+
+
+
+
+        defect_g.selectAll(".rect")
+    .duration(750)
+    .attr("y", function (d) {
+    return y(d.sum);
+})
+
+    .attr("height", function (d) {
+        return height - y(d.sum);
+    })
+    .attr("fill", function (d) {
+        if (d.sum > 70000) {
+            return "red"
+        }
+        else {
+            return "orange"
+        }
+    })
+
+
+
+
+        defect_g.selectAll('.right-axis')
+            .duration(750)
+            .attr("d", function (d) {
+
+                var n = y(d.sum).toFixed(0);
+                return "M10, " + n + " C-10, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
+            })
+
+            .attr('x1', function (d) {
+                return x_category(barPadding) + 2;
+            })
+            .attr('x2', function (d) {
+                return x_category(barPadding) + 2;
+            })
+            .attr('y1', function (d) {
+                return y(d.sum)
+            })
+            .attr('y2', function (d) {
+                return y(d.sum) - 20
+            })
+            .attr("stroke-width", function (d) {
+                if (d.sum > 70000 && d.group === "технические" || d.sum > 70000 && d.group === "социальные" || d.sum > 70000 && d.group === "естественные науки" || d.sum > 70000 && d.group === "гуманитарные") {
+                    return 0.5
+                }
+                else {
+                    return 0
+                }
+            });
+
+
+        defect_g.selectAll('tspan').duration(750).remove();
+        var labels = defect_g.selectAll(".nanu-labels");
+
+        labels.duration(250)
+            .attr("y", function (d) {
+                return y(d.sum) - 60
+            })
+            .attr("dy", 0)
+            .attr("transform", "translate(10,0)")
+            .style('opacity', 0)
+            .each("end", function() {
+                d3.select(this)
+                    .html(function (d) {
+                        if (d.sum > 70000 && d.group === "технические" || d.sum > 70000 && d.group === "социальные" || d.sum > 70000 && d.group === "естественные науки" || d.sum > 70000 && d.group === "гуманитарные") {
+                            return d.name;
+                        }
+                    })
+                    .call(wrap, 80)
+               .transition()
+                    .style('opacity', 1);
+            });
+
+
+
+svg.select("#financeTitle")
+    .duration(750)
+    .text("Загальне фінансування закладів (2015 р.)")
+
+
+    });
+
+}
 
 
 
@@ -359,6 +520,30 @@
 
 
 
-
-
-
+function wrap(text, width) {
+    text.each(function () {
+        var text = d3.select(this),
+        // words = text.text().split(/\s+/).reverse(),
+            words = text.text().split(/\s+/).reverse(),
+            word,
+            line = [],
+            lineNumber = 0,
+            lineHeight = 1.1, // ems
+            y = text.attr("y"),
+            dy = parseFloat(text.attr("dy")),
+            tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");
+        while (word = words.pop()) {
+            line.push(word);
+            tspan.text(line.join(" "));
+            if (tspan.node().getComputedTextLength() > width) {
+                line.pop();
+                tspan.text(line.join(" "));
+                line = [word];
+                tspan = text.append("tspan")
+                    .attr("x", 0).attr("y", y)
+                    .attr("dy", ++lineNumber * lineHeight + dy + "em")
+                    .text(word);
+            }
+        }
+    });
+}
