@@ -147,6 +147,7 @@ path.domain {
   stroke-width: 0; }
 
 g > text {
+  padding-top: 5px;
   color: white;
   fill: white; }
 

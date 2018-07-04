@@ -150,8 +150,6 @@
 
     eventFire(span, 'click');
 
-
-
     var durationTime = 750;
 
 
@@ -162,54 +160,6 @@
     function isInView(elem){
         return $(elem).offset().top - $(window).scrollTop() < $(elem).height() ;
     }
-
-
-    //    $.fn.isInViewport = function() {
-//        var elementTop = $(this).offset().top;
-//        var elementBottom = elementTop + $(this).outerHeight();
-//
-//        var viewportTop = $(window).scrollTop();
-//        var viewportBottom = viewportTop + $(window).height();
-//
-//        return elementBottom > viewportTop && elementTop < viewportBottom;
-//    };
-
-//    $("#scroll").on('scroll', function() {
-//
-//            if ($("#step2").isInViewport()) {
-//             console.log("Yes");
-//                updateData()
-//            } else {
-//                console.log("No");
-//            }
-//        });
-//
-//    $("#scroll").on('scroll', function() {
-//
-//        if ($("#step3").isInViewport()) {
-//            console.log("Yes");
-//            scatter()
-//        } else {
-//            console.log("No");
-//        }
-//    });
-//
-//    $("#scroll").on('scroll', function() {
-//
-//        if ($("#step4").isInViewport()) {
-//            console.log("Yes");
-//            scatterSmall()
-//        } else {
-//            console.log("No");
-//        }
-//    });
-//    $("#scroll").scroll(function(){
-//        if (isInView($('#step1'))) {
-//            //fire whatever you what
-//            window.location.reload(false);
-//        }
-//    });
-
 
     $("#toStep2").on("click",function(){
         if (isInView($('#step2'))) {
@@ -245,14 +195,14 @@
         }
     });
 
-//    $("#scroll").scroll(function(){
-//        if (isInView($('#step5'))) {
-//            //fire whatever you what
-//            scatterFinance();
-//        }
-//    });
 
-//
+
+
+
+
+
+
+
 
 </script>
 

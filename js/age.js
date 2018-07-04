@@ -11,8 +11,8 @@ var chartMargin = {
 
 var color = d3.scale.category20c();
 
-var chartWidth = (window.innerWidth / 3) - chartMargin.left - chartMargin.right,
-    chartHeight = (window.innerWidth / 3) - chartMargin.top - chartMargin.bottom;
+var chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right,
+    chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
 
 var parseDate = d3.time.format("%Y-%m-%d").parse;
 
@@ -28,12 +28,14 @@ var xAxis = d3.svg.axis().scale(x)
     .ticks(10)
     .tickValues(valuesForXAxis)
     .tickSize(-chartHeight)
+    .tickPadding(10)
     ;
 
 var yAxis = d3.svg.axis().scale(y)
     .orient("left")
     .ticks(5)
     .tickSize(-chartWidth)
+    .tickPadding(10)
     ;
 
 // Define the line
@@ -59,6 +61,9 @@ d3.csv("data/age.csv", function(error, data) {
         d.year = parseDate(d.year);
         d.percent = +d.percent;
     });
+
+
+
 
     x.domain(d3.extent(data, function(d) { return d.year; }));
     y.domain([0, d3.max(data, function(d) { return d.percent; })]);
@@ -164,6 +169,12 @@ d3.csv("data/age.csv", function(error, data) {
         .duration(1000)
         .ease("linear")
         .attr("stroke-dashoffset", 0);
+
+
+
+
+
+
 });
 
 
@@ -188,7 +199,8 @@ function updateData() {
             .orient("bottom")
             .ticks(10)
             .tickValues(valuesForXAxis)
-            .tickSize(-chartHeight);
+            .tickSize(-chartHeight)
+            .tickPadding(10);
 
         x.domain(d3.extent(data, function (d) {
             return d.year;

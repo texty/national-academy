@@ -36,12 +36,14 @@ d3.csv("data/dataset.csv", function (error, data) {
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .tickSize(-chartHeight);
+        .tickSize(-chartHeight)
+        .tickPadding(10);
 
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
-        .tickSize(-chartWidth);
+        .tickSize(-chartWidth)
+        .tickPadding(10);
 
 
     x.domain([0, 500]);
@@ -188,12 +190,14 @@ function scatterSmall() {
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom")
-            .tickSize(-chartHeight);
+            .tickSize(-chartHeight)
+            .tickPadding(10);
 
         var yAxis = d3.svg.axis()
             .scale(y)
             .orient("left")
-            .tickSize(-chartWidth);
+            .tickSize(-chartWidth)
+            .tickPadding(10);
 
 
         x.domain([0, 100]);
@@ -258,7 +262,8 @@ function scatterFinance() {
 
         var xAxis = d3.svg.axis()
             .scale(x)
-            .orient("bottom");
+            .orient("bottom")
+            .tickPadding(10);
 
         var yAxis = d3.svg.axis()
             .scale(y)
