@@ -12,7 +12,7 @@
             bottom: 60,
             left: window.innerWidth / 20
         },
-        width = window.innerWidth - margin.left - margin.right,
+        width = window.innerWidth  - margin.left - margin.right,
         height = window.innerHeight / 2;
 
     var color = d3.scale.ordinal()
@@ -178,15 +178,15 @@
             })
             .attr("fill", function (d) {
                 if (d.sum > 40000) {
-                    return "red"
+                    return "orange"
                 }
                 else {
-                    return "orange"
+                    return "white"
                 }
             })
             .on("mouseover", function (d) {
 
-                d3.select(this).attr("fill", "grey");
+                d3.select(this).style("opacity", "1");
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -200,14 +200,7 @@
 
             })
             .on("mouseout", function (d) {
-                d3.select(this).attr("fill", function () {
-                    if (d.sum > 40000) {
-                        return "red"
-                    }
-                    else {
-                        return "orange"
-                    }
-                });
+                d3.select(this).style("opacity", "0.6");
                 div.transition()
                     .duration(200)
                     .style("opacity", 0);
@@ -451,10 +444,10 @@ function totalFinance() {
     })
     .attr("fill", function (d) {
         if (d.sum > 70000) {
-            return "red"
+            return "orange"
         }
         else {
-            return "orange"
+            return "white"
         }
     })
 
@@ -656,10 +649,10 @@ function perPersonFinance() {
             })
             .attr("fill", function (d) {
                 if (d.sum > 70000) {
-                    return "red"
+                    return "orange"
                 }
                 else {
-                    return "orange"
+                    return "white"
                 }
             })
 
@@ -864,10 +857,10 @@ function foreignFinance() {
             })
             .attr("fill", function (d) {
                 if (d.sum > 70000) {
-                    return "red"
+                    return "orange"
                 }
                 else {
-                    return "orange"
+                    return "white"
                 }
             })
 

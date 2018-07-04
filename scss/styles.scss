@@ -76,6 +76,7 @@ p {
 .rect {
   /*fill: steelblue;*/
   width: 5px;
+  opacity:0.6;
 }
 
 #finance-chart > .x.axis path {
@@ -165,10 +166,10 @@ div.tooltip {
 
 
 .modal-content {
-  background-color: #203755;
+  background-color: $textcolor;
   margin: auto;
   padding: 20px;
-  border: 1px solid #494949;
+  border: 1px solid white;
   width: 90%;
   height: 70vh;
 }
@@ -193,7 +194,6 @@ path.domain {
 }
 
 g > text {
-  padding-top: 5px;
   color:$background;
   fill:$background;
 }

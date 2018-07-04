@@ -56,7 +56,8 @@ p {
 
 .rect {
   /*fill: steelblue;*/
-  width: 5px; }
+  width: 5px;
+  opacity: 0.6; }
 
 #finance-chart > .x.axis path {
   display: none; }
@@ -124,10 +125,10 @@ div.tooltip {
   pointer-events: none; }
 
 .modal-content {
-  background-color: #203755;
+  background-color: #17273c;
   margin: auto;
   padding: 20px;
-  border: 1px solid #494949;
+  border: 1px solid white;
   width: 90%;
   height: 70vh; }
 
@@ -147,7 +148,6 @@ path.domain {
   stroke-width: 0; }
 
 g > text {
-  padding-top: 5px;
   color: white;
   fill: white; }
 
