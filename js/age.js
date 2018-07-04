@@ -9,10 +9,10 @@ var chartMargin = {
     left: window.innerWidth / 20
 };
 
-var color = d3.scale.category10();
+var color = d3.scale.category20c();
 
-var chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right,
-    chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
+var chartWidth = (window.innerWidth / 3) - chartMargin.left - chartMargin.right,
+    chartHeight = (window.innerWidth / 3) - chartMargin.top - chartMargin.bottom;
 
 var parseDate = d3.time.format("%Y-%m-%d").parse;
 
@@ -27,13 +27,13 @@ var xAxis = d3.svg.axis().scale(x)
     .orient("bottom")
     .ticks(10)
     .tickValues(valuesForXAxis)
-    // .tickSize(-chartHeight)
+    .tickSize(-chartHeight)
     ;
 
 var yAxis = d3.svg.axis().scale(y)
     .orient("left")
     .ticks(5)
-    .tickSize(10)
+    .tickSize(-chartWidth)
     ;
 
 // Define the line
@@ -68,7 +68,7 @@ d3.csv("data/age.csv", function(error, data) {
         .key(function(d) {return d.age;})
         .entries(data);
 
-    var color = d3.scale.category10();  // set the colour scale
+    var color = d3.scale.category20c();  // set the colour scale
 
     // Loop through each symbol / key
     var linePath;
@@ -124,7 +124,6 @@ d3.csv("data/age.csv", function(error, data) {
             "translate(" + (chartWidth + 20) + " ," +
             (0) + ")")
         .style("text-anchor", "middle")
-        .style("fill", "black")
         .text("")
     ;
 
@@ -188,7 +187,8 @@ function updateData() {
         var xAxis = d3.svg.axis().scale(x)
             .orient("bottom")
             .ticks(10)
-            .tickValues(valuesForXAxis);
+            .tickValues(valuesForXAxis)
+            .tickSize(-chartHeight);
 
         x.domain(d3.extent(data, function (d) {
             return d.year;

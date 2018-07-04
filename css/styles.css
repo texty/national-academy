@@ -1,15 +1,19 @@
 @charset "UTF-8";
 body {
-  font: 10px sans-serif;
-  color: #4b4b4b;
-  background-color: #faf1ff; }
+  font-family: 'Poiret One', cursive;
+  font-size: 10px;
+  color: white;
+  background-color: #17273c;
+  line-height: 1.6; }
 
 .content {
   display: grid;
   grid-template-columns: 40% 60%;
   position: sticky;
   top: 0;
-  left: 0; }
+  left: 0;
+  width: 70%;
+  margin: 0 auto; }
 
 #scroll {
   height: 100vh;
@@ -35,7 +39,8 @@ h3 {
   font-size: 20px;
   width: 70%;
   margin: 0 auto;
-  margin-bottom: 25vh; }
+  margin-bottom: 5vh;
+  font-weight: 100; }
 
 p {
   font-size: 18px;
@@ -119,11 +124,12 @@ div.tooltip {
   pointer-events: none; }
 
 .modal-content {
-  background-color: #faf1ff;
+  background-color: #203755;
   margin: auto;
   padding: 20px;
   border: 1px solid #494949;
-  width: 90%; }
+  width: 90%;
+  height: 70vh; }
 
 .close {
   color: #040404;
@@ -136,5 +142,22 @@ div.tooltip {
   color: #949494;
   text-decoration: none;
   cursor: pointer; }
+
+path.domain {
+  stroke-width: 0; }
+
+g > text {
+  color: white;
+  fill: white; }
+
+g.tick > line {
+  stroke-dasharray: 3, 3;
+  stroke-width: 0.3px; }
+
+#yAxisHint, #xAxisHint {
+  fill: white; }
+
+#financeTitle {
+  color: white; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -35,15 +35,18 @@ d3.csv("data/dataset.csv", function (error, data) {
 
     var xAxis = d3.svg.axis()
         .scale(x)
-        .orient("bottom");
+        .orient("bottom")
+        .tickSize(-chartHeight);
 
     var yAxis = d3.svg.axis()
         .scale(y)
-        .orient("left");
+        .orient("left")
+        .tickSize(-chartWidth);
 
 
     x.domain([0, 500]);
     y.domain([0, 500]);
+
 
 
     // ageChart.selectAll("#agesvg > g > g.y.axis > g.tick").style("opacity", 0);
@@ -55,7 +58,8 @@ d3.csv("data/dataset.csv", function (error, data) {
         .duration(durationTime)
         .call(xAxis);
 
-
+    ageChart.select("#yAxisHint").duration(durationTime).text("чоловіків");
+    ageChart.select("#xAxisHint").duration(durationTime).text("жінок");
 
     var scatter = d3.select("#targetG");
 
@@ -143,8 +147,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         ;
     }
 
-    ageChart.select("#yAxisHint").duration(durationTime).text("чоловіків");
-    ageChart.select("#xAxisHint").duration(durationTime).text("жінок");
+
 
 
 
@@ -184,11 +187,13 @@ function scatterSmall() {
 
         var xAxis = d3.svg.axis()
             .scale(x)
-            .orient("bottom");
+            .orient("bottom")
+            .tickSize(-chartHeight);
 
         var yAxis = d3.svg.axis()
             .scale(y)
-            .orient("left");
+            .orient("left")
+            .tickSize(-chartWidth);
 
 
         x.domain([0, 100]);
