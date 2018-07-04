@@ -22,7 +22,7 @@
     var barPadding = 40;
 
 
-    d3.csv("data/nanuTotalFinancing.csv", function (error, myData) {
+    d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
 
 
         myData.forEach(function (d) {
@@ -234,20 +234,25 @@
             .attr("transform", "translate(10,0)")
             .style("font-size", "9px")
             .style("background-color", "white")
+            // .html(function (d) {
+            //     if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 80 && d.group === "гуманитарные") {
+            //         return d.name + " ";
+            //     }
+            // })
             .html(function (d) {
-                if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 80 && d.group === "гуманитарные") {
+                if (d.perPerson > 115 && d.group === "технічні науки" || d.perPerson > 115 && d.group === "соціальні" || d.perPerson > 115 && d.group === "природничі науки" || d.perPerson > 80 && d.group === "гуманітарні") {
                     return d.name + " ";
                 }
             })
             .call(wrap, 80)
-            .append("tspan")
-            .attr("class", "sum")
-            .attr("fill", "red")
-            .html(function (d) {
-                if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 80 && d.group === "гуманитарные") {
-                    return "  " + d.perPerson.toFixed(2)
-                }
-            })
+            // .append("tspan")
+            // .attr("class", "sum")
+            // .attr("fill", "red")
+            // .html(function (d) {
+            //     if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 80 && d.group === "гуманитарные") {
+            //         return " Заг.: " + d.sum.toFixed(2)
+            //     }
+            // })
         ;
 
 
@@ -282,7 +287,7 @@
             .attr("stroke", 'white')
             .attr("fill", 'transparent')
             .attr("stroke-width", function (d) {
-                if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 80 && d.group === "гуманитарные") {
+                if (d.perPerson > 115 && d.group === "технічні науки" || d.perPerson > 115 && d.group === "соціальні" || d.perPerson > 115 && d.group === "природничі науки" || d.perPerson > 80 && d.group === "гуманітарні") {
                     return 0.5
                 }
                 else {
@@ -322,7 +327,7 @@
 function totalFinance() {
     var svg = d3.select("#finance-chart").transition();
 
-    d3.csv("data/nanuTotalFinancing.csv", function (error, myData) {
+    d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
         myData.forEach(function (d) {
             d.sum = +d.sum;
             d.perPerson = +d.perPerson;
@@ -477,7 +482,7 @@ function totalFinance() {
                 return y(d.sum) - 20
             })
             .attr("stroke-width", function (d) {
-                if (d.sum > 70000 && d.group === "технические" || d.sum > 70000 && d.group === "социальные" || d.sum > 70000 && d.group === "естественные науки" || d.sum > 70000 && d.group === "гуманитарные") {
+                if (d.sum > 70000 && d.group === "технічні науки" || d.sum > 70000 && d.group === "cоціальні" || d.sum > 70000 && d.group === "природничі науки" || d.sum > 70000 && d.group === "гуманітарні") {
                     return 0.5
                 }
                 else {
@@ -499,7 +504,7 @@ function totalFinance() {
             .each("end", function() {
                 d3.select(this)
                     .html(function (d) {
-                        if (d.sum > 70000 && d.group === "технические" || d.sum > 70000 && d.group === "социальные" || d.sum > 70000 && d.group === "естественные науки" || d.sum > 70000 && d.group === "гуманитарные") {
+                        if (d.sum > 70000 && d.group === "технічні науки" || d.sum > 70000 && d.group === "cоціальні" || d.sum > 70000 && d.group === "природничі науки" || d.sum > 70000 && d.group === "гуманітарні") {
                             return d.name;
                         }
                     })
@@ -527,7 +532,7 @@ svg.select("#financeTitle")
 function perPersonFinance() {
     var svg = d3.select("#finance-chart").transition();
 
-    d3.csv("data/nanuTotalFinancing.csv", function (error, myData) {
+    d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
         myData.forEach(function (d) {
             d.sum = +d.sum;
             d.perPerson = +d.perPerson;
@@ -682,7 +687,7 @@ function perPersonFinance() {
                 return y(d.perPerson) - 20
             })
             .attr("stroke-width", function (d) {
-                if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 115 && d.group === "гуманитарные") {
+                if (d.perPerson > 115 && d.group === "технічні науки" || d.perPerson > 115 && d.group === "соціальні" || d.perPerson > 115 && d.group === "природничі науки" || d.perPerson > 80 && d.group === "гуманітарні") {
                     return 0.5
                 }
                 else {
@@ -704,7 +709,7 @@ function perPersonFinance() {
             .each("end", function() {
                 d3.select(this)
                     .html(function (d) {
-                        if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 115 && d.group === "гуманитарные") {
+                        if (d.perPerson > 115 && d.group === "технічні науки" || d.perPerson > 115 && d.group === "соціальні" || d.perPerson > 115 && d.group === "природничі науки" || d.perPerson > 80 && d.group === "гуманітарні") {
                             return d.name;
                         }
                     })
@@ -726,6 +731,211 @@ function perPersonFinance() {
 
 
 
+
+
+
+
+function foreignFinance() {
+    var svg = d3.select("#finance-chart").transition();
+
+    d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
+        myData.forEach(function (d) {
+            d.sum = +d.sum;
+            d.perPerson = +d.perPerson;
+            d.foreign = +d.foreign;
+            
+        });
+
+        myData.sort(function (a, b) {
+            return d3.descending(a.perPerson, b.perPerson);
+        });
+
+
+
+        var data = d3.nest()
+            .key(function (d) {
+                return d.group
+            })
+            .entries(myData);
+
+
+        var rangeBands = [];
+        var cummulative = 0;
+        data.forEach(function (val, i) {
+            val.cummulative = cummulative;
+            cummulative += val.values.length + 3;
+            val.values.forEach(function (values) {
+                values.parentKey = val.name;
+                rangeBands.push(i);
+            })
+        });
+
+
+        console.log(data);
+//    console.log(nestedData);
+
+        var x_category = d3.scale.linear()
+            .range([10, width / 1.3]);
+
+
+        var x_defect = d3.scale.ordinal().domain(rangeBands).rangeRoundBands([0, width], .1);
+        var x_category_domain = x_defect.rangeBand() * rangeBands.length;
+        x_category.domain([0, x_category_domain]);
+
+        var y = d3.scale.linear()
+            .range([height, 100]);
+
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .tickFormat(d3.format(".2s"))
+            .tickSize(-width);
+
+
+
+        y.domain([0, d3.max(data, function (cat) {
+            return d3.max(cat.values, function (def) {
+                return def.foreign * 1.5;
+            });
+        })]);
+
+
+
+
+        svg.select(".y.axis")
+            .duration(durationTime)
+            .call(yAxis);
+
+        svg.select(".x.axis")
+            .duration(durationTime)
+            .call(xAxis);
+
+
+
+        var category_g = svg.selectAll(".category");
+        category_g.duration(740)
+            .attr("transform", function (d) {
+                return "translate(" + x_category((d.cummulative * x_defect.rangeBand()) + 5) + ",0)";
+            })
+            .attr("fill", function (d) {
+                return color[d.key];
+            });
+
+        var category_label = category_g.selectAll(".category-label");
+        category_label.duration(740)
+            .attr("class", function (d) {
+                console.log(d)
+                return 'category-label category-label-' + d.group;
+            })
+            .attr("transform", function (d) {
+                var x_label = x_category((d.values.length * x_defect.rangeBand() + barPadding) / 2);
+                var y_label = height + 30;
+                return "translate(" + x_label + "," + y_label + ")";
+            })
+            .text(function (d) {
+                return d.key;
+            })
+            .attr('text-anchor', 'middle');
+
+        var defect_g = category_g.selectAll(".defect");
+        defect_g.duration(740)
+            .attr("class", function (d) {
+                return 'defect defect ' + d.group;
+            })
+            .attr("transform", function (d, i) {
+                return "translate(" + x_category((i * x_defect.rangeBand())) + ",0)";
+            })
+
+            .style("margin-left", "390px");
+
+
+
+
+
+        defect_g.selectAll(".rect")
+            .duration(750)
+            .attr("y", function (d) {
+                return y(d.foreign);
+            })
+
+            .attr("height", function (d) {
+                return height - y(d.foreign);
+            })
+            .attr("fill", function (d) {
+                if (d.sum > 70000) {
+                    return "red"
+                }
+                else {
+                    return "orange"
+                }
+            })
+
+
+
+
+        defect_g.selectAll('.right-axis')
+            .duration(750)
+            .attr("d", function (d) {
+
+                var n = y(d.foreign).toFixed(0);
+                return "M10, " + n + " C-10, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
+            })
+
+            .attr('x1', function (d) {
+                return x_category(barPadding) + 2;
+            })
+            .attr('x2', function (d) {
+                return x_category(barPadding) + 2;
+            })
+            .attr('y1', function (d) {
+                return y(d.foreign)
+            })
+            .attr('y2', function (d) {
+                return y(d.foreign) - 20
+            })
+            .attr("stroke-width", function (d) {
+                if (d.foreign > 10000 && d.group === "технічні науки" || d.foreign > 10000 && d.group === "соціальні" || d.foreign > 10000 && d.group === "природничі науки" || d.foreign > 10000 && d.group === "гуманітарні") {
+                    return 0.5
+                }
+                else {
+                    return 0
+                }
+            });
+
+
+        defect_g.selectAll('tspan').duration(750).remove();
+        var labels = defect_g.selectAll(".nanu-labels");
+
+        labels.duration(250)
+            .attr("y", function (d) {
+                return y(d.foreign) - 60
+            })
+            .attr("dy", 0)
+            .attr("transform", "translate(20,0)")
+            .style('opacity', 0)
+            .each("end", function() {
+                d3.select(this)
+                    .html(function (d) {
+                        if (d.foreign > 10000 && d.group === "технічні науки" || d.foreign > 10000 && d.group === "соціальні" || d.foreign > 10000 && d.group === "природничі науки" || d.foreign > 10000 && d.group === "гуманітарні") {
+                            return d.name;
+                        }
+                    })
+                    .call(wrap, 80)
+                    .transition()
+                    .style('opacity', 1);
+            });
+
+
+
+        svg.select("#financeTitle")
+            .duration(750)
+            .text("Іноземні вкладення (2015 р.)")
+
+
+    });
+
+}
 
 function wrap(text, width) {
     text.each(function () {

@@ -93,7 +93,7 @@ div.tooltip {
   height: auto;
   padding: 2px;
   font: 9px sans-serif;
-  background: #faf1ff;
+  background: $textcolor;
   border: 0px;
   pointer-events: none;
   z-index:11;
@@ -174,9 +174,9 @@ div.tooltip {
 }
 
 .close {
-  color: #040404;
+  color: white;
   float: right;
-  font-size: 28px;
+  font-size: 40px;
   font-weight: bold;
 }
 
@@ -208,5 +208,14 @@ g.tick > line {
 
 #financeTitle {
   color:$background;
+}
+
+a {
+  color: #85a8d0;
+  font-weight: bold;
+}
+
+a:visited {
+  color: #85a8d0
 }
 
