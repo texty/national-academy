@@ -3,16 +3,24 @@
  */
 
 var chartMargin = {
-    top: 20,
-    right: window.innerWidth / 20,
-    bottom: 60,
-    left: window.innerWidth / 20
+    top: 50,
+    right: 50,
+    bottom: 50,
+    left: 50
 };
 
 var color = d3.scale.category20c();
 
-var chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right,
-    chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
+var chartWidth, chartHeigh;
+
+
+if(screen.width < 1824) {
+   chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right,
+   chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
+} else if (screen.width >= 1824) {
+    chartWidth = (window.innerWidth / 4) - chartMargin.left - chartMargin.right,
+    chartHeight = (window.innerWidth / 4) - chartMargin.top - chartMargin.bottom;
+}
 
 var parseDate = d3.time.format("%Y-%m-%d").parse;
 
@@ -73,12 +81,12 @@ d3.csv("data/age.csv", function(error, data) {
         .key(function(d) {return d.age;})
         .entries(data);
 
-    var color = d3.scale.category20c();  // set the colour scale
+    var color = d3.scale.category10();  // set the colour scale
 
     // Loop through each symbol / key
     var linePath;
 
-    dataNest.forEach(function(d) {
+    dataNest.forEach(function(d, i) {
 
         var group = ageChart.append('g');
 
@@ -98,15 +106,34 @@ d3.csv("data/age.csv", function(error, data) {
         // setInterval(function () {
             label.attr("class", "ageChartLabels")
                 .attr("fill", d.color)
+                .style("font-weight", "800")
 
                 .attr("transform", function () {
                     if (d.key === "30-34 роки") {
-                        xx = d.values[2].year;
+                        xx = d.values[1].year;
                         yy = d.values[2].percent + 0.5;
                         return "translate(" + x(xx) + "," + y(yy) + ")";
-                    } else {
+                    }
+                    if (d.key === "45-49 років") {
                         xx = d.values[7].year;
-                        yy = d.values[7].percent;
+                        yy = d.values[7].percent - 0.5;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+                    if (d.key === "60-64 роки") {
+                        xx = d.values[7].year;
+                        yy = d.values[7].percent + 0.1;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+                    if (d.key === "50-54 роки") {
+                        // xx = d.values[0].year;
+                        xx = parseDate("2007-06-01");
+                        yy = d.values[0].percent - 0.5;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+
+                    else {
+                        xx = d.values[7].year;
+                        yy = d.values[7].percent-0.5;
                         return "translate(" + x(xx) + "," + y(yy) + ")";
                     }
                 })

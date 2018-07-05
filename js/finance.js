@@ -10,9 +10,9 @@
             top: 20,
             right: window.innerWidth / 50,
             bottom: 60,
-            left: window.innerWidth / 20
+            left: window.innerWidth / 40
         },
-        width = window.innerWidth  - margin.left - margin.right,
+        width = window.innerWidth / 1.3- margin.left - margin.right,
         height = window.innerHeight / 2;
 
     var color = d3.scale.ordinal()
@@ -46,7 +46,7 @@
         var cummulative = 0;
         data.forEach(function (val, i) {
             val.cummulative = cummulative;
-            cummulative += val.values.length + 3;
+            cummulative += val.values.length + 2;
             val.values.forEach(function (values) {
                 values.parentKey = val.name;
                 rangeBands.push(i);
@@ -87,7 +87,7 @@
             .tickFormat(d3.format(".2s"))
             .tickSize(-width);
 
-        var svg = d3.select(".modal-content").append("svg")
+        var svg = d3.select("div#insert").append("svg")//.modal-content
             .attr("id", "finance-chart")
             .attr("width", width - margin.left - margin.right)
             .attr("height", height + margin.top + margin.bottom)
@@ -113,7 +113,7 @@
                 return 'category category-' + d.key;
             })
             .attr("transform", function (d) {
-                return "translate(" + x_category((d.cummulative * x_defect.rangeBand()) + 5) + ",0)";
+                return "translate(" + x_category((d.cummulative * x_defect.rangeBand()) + 20) + ",0)";
             })
             .attr("fill", function (d) {
                 return color[d.key];
@@ -192,7 +192,7 @@
                     .style("opacity", .9);
 
 //                    div.html(d.name + "<br> <br> Загальне фінансування: " + d.sum + " тис. грн")
-                div.html(d.name + "<br>" + "<span style='font-weight: 800; color: orange;'>" + d.perPerson.toFixed(2) + "</span>")
+                div.html(d.name)
 
                     .style("left", (d3.event.pageX) + 10 + "px")
                     .style("top", (d3.event.pageY) - 100 + "px")
@@ -237,7 +237,7 @@
                     return d.name + " ";
                 }
             })
-            .call(wrap, 80)
+            .call(wrap, 60)
             // .append("tspan")
             // .attr("class", "sum")
             // .attr("fill", "red")
@@ -261,7 +261,7 @@
             .attr("d", function (d) {
 
                 var n = y(d.perPerson).toFixed(0);
-                return "M10, " + n + " C-10, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
+                return "M10, " + n + " C-5, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
             })
             .attr('class', 'right-axis')
             .attr('x1', function (d) {
@@ -298,9 +298,10 @@
             .text("Питоме фінансування на робітника (2015 р.)")
         ;
 
-        svg.append("text")
-            .attr("y", height + 50)
-            .html("На графіку представлені заклади із загальною чисельністю робітників понад 100 осіб. </br> Черовним кольором позначені ті заклади, що мають найбільше загальне фінансування")
+        // svg.append("text")
+        //     .attr("y", height + 50)
+        //     .style("font-size", "12px")
+        //     .html("")
 
         var len = $("text.nanu-labels>tspan").length;
         for (var i = 0; i < len; i++) {
@@ -459,7 +460,7 @@ function totalFinance() {
             .attr("d", function (d) {
 
                 var n = y(d.sum).toFixed(0);
-                return "M10, " + n + " C-10, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
+                return "M10, " + n + " C-5, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
             })
 
             .attr('x1', function (d) {
@@ -492,7 +493,7 @@ function totalFinance() {
                 return y(d.sum) - 60
             })
             .attr("dy", 0)
-            .attr("transform", "translate(20,0)")
+            .attr("transform", "translate(10,0)")
             .style('opacity', 0)
             .each("end", function() {
                 d3.select(this)
@@ -664,8 +665,7 @@ function perPersonFinance() {
             .attr("d", function (d) {
 
                 var n = y(d.perPerson).toFixed(0);
-                return "M10, " + n + " C-10, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
-            })
+                return "M10, " + n + " C-5, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""            })
 
             .attr('x1', function (d) {
                 return x_category(barPadding) + 2;
@@ -697,7 +697,7 @@ function perPersonFinance() {
                 return y(d.perPerson) - 60
             })
             .attr("dy", 0)
-            .attr("transform", "translate(20,0)")
+            .attr("transform", "translate(10,0)")
             .style('opacity', 0)
             .each("end", function() {
                 d3.select(this)
@@ -706,7 +706,7 @@ function perPersonFinance() {
                             return d.name;
                         }
                     })
-                    .call(wrap, 80)
+                    .call(wrap, 60)
                     .transition()
                     .style('opacity', 1);
             });
@@ -872,8 +872,7 @@ function foreignFinance() {
             .attr("d", function (d) {
 
                 var n = y(d.foreign).toFixed(0);
-                return "M10, " + n + " C-10, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""
-            })
+                return "M10, " + n + " C-5, " + (n - 20) + " 0, " + (n - 50) + " 5," + (n - 50) + ""            })
 
             .attr('x1', function (d) {
                 return x_category(barPadding) + 2;
@@ -905,7 +904,7 @@ function foreignFinance() {
                 return y(d.foreign) - 60
             })
             .attr("dy", 0)
-            .attr("transform", "translate(20,0)")
+            .attr("transform", "translate(10,0)")
             .style('opacity', 0)
             .each("end", function() {
                 d3.select(this)
@@ -923,8 +922,7 @@ function foreignFinance() {
 
         svg.select("#financeTitle")
             .duration(750)
-            .text("Іноземні вкладення (2015 р.)")
-
+            .text("Іноземні вкладення (2015 р.)");
 
     });
 
@@ -938,7 +936,7 @@ function wrap(text, width) {
             word,
             line = [],
             lineNumber = 0,
-            lineHeight = 1.1, // ems
+            lineHeight = 1.4, // ems
             y = text.attr("y"),
             dy = parseFloat(text.attr("dy")),
             tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");

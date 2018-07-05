@@ -9,11 +9,18 @@ body {
 .content {
   display: grid;
   grid-template-columns: 40% 60%;
-  position: sticky;
-  top: 0;
-  left: 0;
   width: 70%;
   margin: 0 auto; }
+  @media (min-width: 1824px) {
+    .content {
+      grid-template-columns: 50% 50%;
+      width: 50%;
+      margin: 0 auto; } }
+
+#financeChartsContainer {
+  width: 70%;
+  margin: 0 auto;
+  display: none; }
 
 #scroll {
   height: 100vh;
@@ -39,12 +46,19 @@ h3 {
   font-size: 20px;
   width: 70%;
   margin: 0 auto;
-  margin-bottom: 5vh;
+  margin-bottom: 15vh;
   font-weight: 100; }
+  @media (min-width: 1824px) {
+    h3 {
+      width: 50%;
+      margin: 0 auto;
+      margin-bottom: 15vh; } }
 
 p {
   font-size: 18px;
-  line-height: 1.6;
+  line-height: 1.6; }
+
+.step > p {
   width: 80%; }
 
 /* -------------    Графік по фінансам  ----------   */
@@ -67,11 +81,12 @@ p {
 
 div.tooltip {
   position: absolute;
-  min-width: 80px;
-  max-width: 100px;
+  min-width: 60px;
+  max-width: 80px;
   height: auto;
   padding: 2px;
-  font: 9px sans-serif;
+  font-size: 9px;
+  line-height: 1.4;
   background: #17273c;
   border: 0px;
   pointer-events: none;
@@ -147,7 +162,7 @@ div.tooltip {
 path.domain {
   stroke-width: 0; }
 
-g > text {
+g > text:not(.ageChartLabels) {
   color: white;
   fill: white; }
 
@@ -161,11 +176,28 @@ g.tick > line {
 #financeTitle {
   color: white; }
 
-a {
+a:not(.fa) {
   color: #85a8d0;
   font-weight: bold; }
 
-a:visited {
+a.fa {
+  color: white;
+  margin-left: 25%; }
+
+a:not(.fa):visited {
   color: #85a8d0; }
+
+a.fa:visited {
+  color: white; }
+
+#insert {
+  display: block;
+  opacity: 1; }
+
+#targetG > g:nth-child(6) > text {
+  margin-top: 10px; }
+
+button {
+  margin-right: 20px; }
 
 /*# sourceMappingURL=styles.css.map */
