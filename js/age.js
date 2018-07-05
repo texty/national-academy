@@ -11,16 +11,22 @@ var chartMargin = {
 
 var color = d3.scale.category20c();
 
-var chartWidth, chartHeigh;
+var chartWidth, chartHeight;
 
 
-if(screen.width < 1824) {
-   chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right,
+
+if (screen.width < 800) {
+    chartWidth = (window.innerWidth) - chartMargin.left - chartMargin.right - 50;
+    chartHeight = (window.innerWidth) - chartMargin.top - chartMargin.bottom;
+} else if(screen.width >= 800 && screen.width < 1824 ) {
+   chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right;
    chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
 } else if (screen.width >= 1824) {
-    chartWidth = (window.innerWidth / 4) - chartMargin.left - chartMargin.right,
-    chartHeight = (window.innerWidth / 4) - chartMargin.top - chartMargin.bottom;
+    chartWidth = (window.innerWidth / 5) - chartMargin.left - chartMargin.right;
+    chartHeight = (window.innerWidth / 5) - chartMargin.top - chartMargin.bottom;
 }
+
+
 
 var parseDate = d3.time.format("%Y-%m-%d").parse;
 

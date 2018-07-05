@@ -2,6 +2,8 @@
  * Created by yevheniia on 30.06.18.
  */
 
+
+var grey = "#17273c";
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
@@ -9,11 +11,27 @@
     var margin = {
             top: 20,
             right: window.innerWidth / 50,
-            bottom: 60,
-            left: window.innerWidth / 40
-        },
-        width = window.innerWidth / 1.3- margin.left - margin.right,
-        height = window.innerHeight / 2;
+            bottom: 60
+
+        };
+
+var width, height;
+
+if (screen.width < 800) {
+    margin.left = 50;
+
+    width = window.innerWidth  - margin.left  - margin.right - 50;
+    height = 300;
+} else if(screen.width >= 800 && screen.width < 1824 ) {
+    margin.left = 50;
+    width = window.innerWidth / 1.3- margin.left - margin.right;
+    height = window.innerHeight / 2;
+} else if (screen.width >= 1824) {
+    margin.left = 50;
+    width = window.innerWidth / 1.7 - margin.left - margin.right;
+    height = window.innerHeight / 2;
+}
+
 
     var color = d3.scale.ordinal()
         .domain([0, 3])
@@ -99,7 +117,6 @@
             .attr("class", "y axis")
             .call(yAxis)
             .append("text")
-            //                .attr("transform", "rotate(-90)")
             .attr("y", 80)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
@@ -181,7 +198,7 @@
                     return "orange"
                 }
                 else {
-                    return "white"
+                    return grey
                 }
             })
             .on("mouseover", function (d) {
@@ -226,7 +243,7 @@
             .attr("dy", 0)
             .attr("transform", "translate(10,0)")
             .style("font-size", "9px")
-            .style("background-color", "white")
+            .style("background-color", "grey")
             // .html(function (d) {
             //     if (d.perPerson > 115 && d.group === "технические" || d.perPerson > 115 && d.group === "социальные" || d.perPerson > 115 && d.group === "естественные науки" || d.perPerson > 80 && d.group === "гуманитарные") {
             //         return d.name + " ";
@@ -277,7 +294,7 @@
                 return y(d.perPerson) - 20
             })
             .attr("marker-end", "url(#arrow)")
-            .attr("stroke", 'white')
+            .attr("stroke", 'grey')
             .attr("fill", 'transparent')
             .attr("stroke-width", function (d) {
                 if (d.perPerson > 115 && d.group === "технічні науки" || d.perPerson > 115 && d.group === "соціальні" || d.perPerson > 115 && d.group === "природничі науки" || d.perPerson > 80 && d.group === "гуманітарні") {
@@ -388,9 +405,9 @@ function totalFinance() {
             .duration(durationTime)
             .call(yAxis);
 
-        svg.select(".x.axis")
-            .duration(durationTime)
-            .call(xAxis);
+        // svg.select(".x.axis")
+        //     .duration(durationTime)
+        //     .call(xAxis);
 
 
 
@@ -448,7 +465,7 @@ function totalFinance() {
             return "orange"
         }
         else {
-            return "white"
+            return grey
         }
     })
 
@@ -593,9 +610,9 @@ function perPersonFinance() {
             .duration(durationTime)
             .call(yAxis);
 
-        svg.select(".x.axis")
-            .duration(durationTime)
-            .call(xAxis);
+        // svg.select(".x.axis")
+        //     .duration(durationTime)
+        //     .call(xAxis);
 
 
 
@@ -653,7 +670,7 @@ function perPersonFinance() {
                     return "orange"
                 }
                 else {
-                    return "white"
+                    return grey
                 }
             })
 
@@ -860,7 +877,7 @@ function foreignFinance() {
                     return "orange"
                 }
                 else {
-                    return "white"
+                    return grey
                 }
             })
 
@@ -936,7 +953,7 @@ function wrap(text, width) {
             word,
             line = [],
             lineNumber = 0,
-            lineHeight = 1.4, // ems
+            lineHeight = 1.2, // ems
             y = text.attr("y"),
             dy = parseFloat(text.attr("dy")),
             tspan = text.text(null).append("tspan").attr("x", 0).attr("y", y).attr("dy", dy + "em");

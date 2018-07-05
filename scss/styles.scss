@@ -1,14 +1,33 @@
-$background:  white;
-$textcolor: #17273c;
+$background:#17273c;
+$textcolor: #fffceb;
+//$background:  white;
+//$textcolor: #17273c;
 //#85a8d0, #17273c, #253539
 
 body {
 
-  font-family: 'Poiret One', cursive;
+  //font-family: 'Ubuntu', sans-serif;
+  //font-family: 'Rubik', sans-serif;
+  //font-family: 'EB Garamond', serif; // дрібновато
+  //font-family: 'Alegreya Sans', sans-serif;
+  //font-family: 'Cormorant Garamond', serif;
+  //font-family: 'PT Mono', monospace;
+  //font-family: 'Poiret One', cursive;
+  //font-family: 'Roboto', sans-serif; // непогано
+  //font-family: 'Open Sans', sans-serif; // непогано
+  //font-family: 'Source Sans Pro', sans-serif; // дрібновато у світлому
+  //font-family: 'Exo 2', sans-serif; //як варіант в темному
+  font-family: 'Play', sans-serif; // непогано
+  //font-family: 'PT Sans Caption', sans-serif; // непогано
+  //font-family: 'Jura', sans-serif; //скоріше ні, ніж так
+  //font-family: 'Marmelad', sans-serif;// бє
+  //font-family: 'IBM Plex Sans', sans-serif; //ні про що
   font-size: 10px;
   color: $background;
   background-color: $textcolor;
   line-height: 1.6;
+
+
 }
 
 
@@ -26,12 +45,30 @@ body {
     width:50%;
     margin:0 auto;
   }
+
+  @media (max-width:800px) {
+    grid-template-columns: 100%;
+    width:90%;
+    margin:0 0;
+  }
 }
 
 #financeChartsContainer {
   width:70%;
   margin:0 auto;
   display:none;
+
+  @media (min-width:1824px) {
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  @media (max-width:800px) {
+    grid-template-columns: 100%;
+    width:90%;
+    margin:0 0;
+    display:block;
+  }
 }
 
 
@@ -40,10 +77,18 @@ body {
   overflow-y:hidden;
   overflow-x:hidden;
   grid-column: 1/2;
+
+  @media (max-width:800px) {
+    height:auto;
+  }
 }
 
 .step {
   height:100vh;
+
+  @media (max-width:800px) {
+    height:auto;
+  }
 
 }
 
@@ -53,6 +98,7 @@ h1 {
   margin:0 auto;
   text-align: center;
   margin-bottom:50px;
+  margin-top:50px;
 }
 
 h2 {
@@ -66,10 +112,15 @@ h3 {
   margin:0 auto;
   margin-bottom:15vh;
   font-weight: 100;
+
   @media (min-width:1824px) {
     width:50%;
     margin:0 auto;
     margin-bottom:15vh;
+  }
+
+  @media (max-width:800px) {
+    text-align: center;
   }
 }
 
@@ -81,6 +132,10 @@ p {
 
 .step > p {
   width:80%;
+
+  @media (max-width:800px) {
+    width:100%;
+  }
 }
 
 /* -------------    Графік по фінансам  ----------   */
@@ -95,7 +150,11 @@ p {
 .rect {
   /*fill: steelblue;*/
   width: 5px;
-  opacity:0.6;
+  opacity:0.7;
+
+  @media (max-width:800px) {
+    width: 3px;
+  }
 }
 
 #finance-chart > .x.axis path {
@@ -235,25 +294,37 @@ g.tick > line {
 a:not(.fa) {
   color: #85a8d0;
   font-weight: bold;
+  text-decoration: none;
+
 }
 
 a.fa {
-  color: white;
+  color: $background;
   margin-left: 25%;
+
+  @media (max-width:800px) {
+    display:none;
+  }
+}
+
+svg.fa {
+  fill: $background;
 }
 
 a:not(.fa):visited {
-  color: #85a8d0
+  color: $background
 }
 
 a.fa:visited {
-  color: white;
+  color: $background;
+  text-decoration: none;
 }
 
 #insert {
   display:block;
   opacity:1;
-  //margin-left: -15%;
+
+
 }
 
 #targetG > g:nth-child(6) > text {
@@ -262,6 +333,12 @@ a.fa:visited {
 
 button {
   margin-right: 20px;
+}
+
+.nanu-labels, .right-axis, #financeTitle {
+  @media (max-width:1000px) {
+    display:none;
+  }
 }
 
 

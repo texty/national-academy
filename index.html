@@ -5,8 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Cormorant+Garamond|Exo+2|Marmelad|Philosopher|Poiret+One|Source+Sans+Pro"
-          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Cormorant|Cormorant+Garamond|EB+Garamond|PT+Mono|Podkova|Poiret+One|Rubik|Ubuntu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Anonymous+Pro|Exo+2|IBM+Plex+Sans|Jura|Marmelad|Noto+Sans|Open+Sans|PT+Sans+Caption|Play|Roboto|Source+Sans+Pro" rel="stylesheet">
+
     <link rel="stylesheet" href=css/styles.css>
 
 
@@ -29,23 +30,25 @@
                         href="http://texty.org.ua/pg/article/editorial/read/82121/Zombiakademija_vchenipensionery_NAN_Ukrajiny_ne_vytrymujut_konkurenciji"
                         target="_blank">лінком.</a></p>
             <a class='fa' href="#step2" id="toStep2">
-                <svg width='50' height="50" fill="white" viewBox="0 0 1000 1000">
+                <svg class='fa' width='50' height="50" viewBox="0 0 1000 1000">
                     <g>
                         <path d="M500,755.9L14.7,270.6c-6.2-6.2-6.2-15.6,0-21.8c6.2-6.2,15.6-6.2,21.8,0L500,712.3l463.6-463.6c6.2-6.2,15.6-6.2,21.8,0c6.2,6.2,6.2,15.6,0,21.8L500,755.9z"/>
                     </g>
                 </svg>
             </a>
+            <div id="chart1"></div>
         </div>
+
 
         <div id="step2" class="step">
             <h2>Чисельність дослідників НАНУ за статями</h2>
             <p>В закладах НАНУ дослідників більше ніж дослідниць. З чим це повʼязано (коментар Булкіна)</p>
-            <a class='fa' href="#step3" id="toStep3"> <svg width='50' height="50" fill="white" viewBox="0 0 1000 1000">
+            <a class='fa' href="#step3" id="toStep3"> <svg class='fa' width='50' height="50" viewBox="0 0 1000 1000">
                 <g>
                     <path d="M500,755.9L14.7,270.6c-6.2-6.2-6.2-15.6,0-21.8c6.2-6.2,15.6-6.2,21.8,0L500,712.3l463.6-463.6c6.2-6.2,15.6-6.2,21.8,0c6.2,6.2,6.2,15.6,0,21.8L500,755.9z"/>
                 </g>
             </svg></a>
-
+            <div id="chart2"></div>
         </div>
 
         <div id="step3" class="step">
@@ -53,24 +56,24 @@
             <p>Як видно з графіку, чоловіки переважають у великих закладах НАНУ. Пропонуємо Вам дослідити скільки
                 дослідників і дослідниць працює в тому чи чи іншому закладі. Наведіть мишею на будь-яку точку і Ви
                 побачите назву закладу і гендерний розподіл працівників-науковців. </p>
-            <a class="fa" href="#step4" id="toStep4"><svg width='50' height="50" fill="white" viewBox="0 0 1000 1000">
+            <a class="fa" href="#step4" id="toStep4"><svg  class='fa' width='50' height="50" viewBox="0 0 1000 1000">
                 <g>
                     <path d="M500,755.9L14.7,270.6c-6.2-6.2-6.2-15.6,0-21.8c6.2-6.2,15.6-6.2,21.8,0L500,712.3l463.6-463.6c6.2-6.2,15.6-6.2,21.8,0c6.2,6.2,6.2,15.6,0,21.8L500,755.9z"/>
                 </g>
             </svg></a>
-
+            <div id="chart3"></div>
         </div>
 
         <div id="step4" class="step">
             <h2>Кількість дослідників і дослідниць у закладах НАНУ (2015 р.)</h2>
             <p>Тепер на графіку відображені лише заклади, що мають не більше 100 науковців. В маленьких закладах жінки і
                 чоловіки представлені більш рівномірно.</p>
-            <a class="fa" onclick="showFinance()" href="#insert"><svg width='50' height="50" fill="white" viewBox="0 0 1000 1000">
+            <a class="fa" onclick="showFinance()" href="#insert"><svg  class='fa' width='50' height="50" viewBox="0 0 1000 1000">
                 <g>
                     <path d="M500,755.9L14.7,270.6c-6.2-6.2-6.2-15.6,0-21.8c6.2-6.2,15.6-6.2,21.8,0L500,712.3l463.6-463.6c6.2-6.2,15.6-6.2,21.8,0c6.2,6.2,6.2,15.6,0,21.8L500,755.9z"/>
                 </g>
             </svg></a>
-            <!--<button><a href="#step3" id="backtoStep3">Назад</a></button>-->
+            <div id="chart4"></div>
         </div>
 
         <div id="step5" class="step">
@@ -78,14 +81,6 @@
 
         </div>
 
-
-        <div id="step6" class="step">
-            <h2>Кількість теоретичних і прикладних досліджень у закладах НАНУ</h2>
-            <p> Всі заклади НАНУ можна поділити на чотири категорії за сферою діяльності (природничі, технічні,
-                соціальні, гуманітарні. </p>
-
-
-        </div>
     </div>
 
     <div id="charts">
@@ -141,10 +136,53 @@
 <script src="lib/d3-ring-note.js"></script>
 
 <!-- Local scripts -->
-<script src="js/finance.js"></script>
-<script src="js/age.js"></script>
-<script src="js/genderScatter.js"></script>
-<script src="js/scatterUpdate.js"></script>
+<!--<script src="js/finance.js"></script>-->
+<!--<script src="js/age.js"></script>-->
+<!--<script src="js/genderScatter.js"></script>-->
+<!--<script src="js/scatterUpdate.js"></script>-->
+<!--<script src="js/mobile.js"></script>-->
+
+
+<script>
+
+    var body = document.getElementsByTagName('body')[0];
+    var js0 = document.createElement("script");
+    var js1 = document.createElement("script");
+    var js2 = document.createElement("script");
+    var js3 = document.createElement("script");
+    var js4 = document.createElement("script");
+
+    js0.type = "text/javascript";
+    js1.type = "text/javascript";
+    js2.type = "text/javascript";
+    js3.type = "text/javascript";
+    js4.type = "text/javascript";
+
+
+    if (screen.width >= 800) {
+        js0.src = "js/finance.js";
+        js1.src = "js/age.js";
+        js2.src = "js/genderScatter.js";
+        js3.src = "js/scatterUpdate.js";
+
+
+    }
+    else if (screen.width < 800){
+        js0.src = "js/mobile.js";
+        js1.src = "js/finance.js";
+        js2.src = "";
+        js3.src = "";
+
+
+    }
+    body.appendChild(js0);
+    body.appendChild(js1);
+    body.appendChild(js2);
+    body.appendChild(js3);
+
+</script>
+
+
 
 
 <script>

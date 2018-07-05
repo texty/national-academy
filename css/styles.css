@@ -1,9 +1,9 @@
 @charset "UTF-8";
 body {
-  font-family: 'Poiret One', cursive;
+  font-family: 'Play', sans-serif;
   font-size: 10px;
-  color: white;
-  background-color: #17273c;
+  color: #17273c;
+  background-color: #fffceb;
   line-height: 1.6; }
 
 .content {
@@ -16,27 +16,49 @@ body {
       grid-template-columns: 50% 50%;
       width: 50%;
       margin: 0 auto; } }
+  @media (max-width: 800px) {
+    .content {
+      grid-template-columns: 100%;
+      width: 90%;
+      margin: 0 0; } }
 
 #financeChartsContainer {
   width: 70%;
   margin: 0 auto;
   display: none; }
+  @media (min-width: 1824px) {
+    #financeChartsContainer {
+      width: 50%;
+      margin: 0 auto; } }
+  @media (max-width: 800px) {
+    #financeChartsContainer {
+      grid-template-columns: 100%;
+      width: 90%;
+      margin: 0 0;
+      display: block; } }
 
 #scroll {
   height: 100vh;
   overflow-y: hidden;
   overflow-x: hidden;
   grid-column: 1/2; }
+  @media (max-width: 800px) {
+    #scroll {
+      height: auto; } }
 
 .step {
   height: 100vh; }
+  @media (max-width: 800px) {
+    .step {
+      height: auto; } }
 
 h1 {
   font-size: 40px;
   width: 70%;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  margin-top: 50px; }
 
 h2 {
   font-size: 20px;
@@ -53,6 +75,9 @@ h3 {
       width: 50%;
       margin: 0 auto;
       margin-bottom: 15vh; } }
+  @media (max-width: 800px) {
+    h3 {
+      text-align: center; } }
 
 p {
   font-size: 18px;
@@ -60,6 +85,9 @@ p {
 
 .step > p {
   width: 80%; }
+  @media (max-width: 800px) {
+    .step > p {
+      width: 100%; } }
 
 /* -------------    Графік по фінансам  ----------   */
 .axis path,
@@ -71,7 +99,10 @@ p {
 .rect {
   /*fill: steelblue;*/
   width: 5px;
-  opacity: 0.6; }
+  opacity: 0.7; }
+  @media (max-width: 800px) {
+    .rect {
+      width: 3px; } }
 
 #finance-chart > .x.axis path {
   display: none; }
@@ -87,7 +118,7 @@ div.tooltip {
   padding: 2px;
   font-size: 9px;
   line-height: 1.4;
-  background: #17273c;
+  background: #fffceb;
   border: 0px;
   pointer-events: none;
   z-index: 11; }
@@ -140,7 +171,7 @@ div.tooltip {
   pointer-events: none; }
 
 .modal-content {
-  background-color: #17273c;
+  background-color: #fffceb;
   margin: auto;
   padding: 20px;
   border: 1px solid white;
@@ -163,32 +194,40 @@ path.domain {
   stroke-width: 0; }
 
 g > text:not(.ageChartLabels) {
-  color: white;
-  fill: white; }
+  color: #17273c;
+  fill: #17273c; }
 
 g.tick > line {
   stroke-dasharray: 3, 3;
   stroke-width: 0.3px; }
 
 #yAxisHint, #xAxisHint {
-  fill: white; }
+  fill: #17273c; }
 
 #financeTitle {
-  color: white; }
+  color: #17273c; }
 
 a:not(.fa) {
   color: #85a8d0;
-  font-weight: bold; }
+  font-weight: bold;
+  text-decoration: none; }
 
 a.fa {
-  color: white;
+  color: #17273c;
   margin-left: 25%; }
+  @media (max-width: 800px) {
+    a.fa {
+      display: none; } }
+
+svg.fa {
+  fill: #17273c; }
 
 a:not(.fa):visited {
-  color: #85a8d0; }
+  color: #17273c; }
 
 a.fa:visited {
-  color: white; }
+  color: #17273c;
+  text-decoration: none; }
 
 #insert {
   display: block;
@@ -199,5 +238,9 @@ a.fa:visited {
 
 button {
   margin-right: 20px; }
+
+@media (max-width: 1000px) {
+  .nanu-labels, .right-axis, #financeTitle {
+    display: none; } }
 
 /*# sourceMappingURL=styles.css.map */
