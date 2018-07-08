@@ -1,11 +1,10 @@
 /**
  * Created by yevheniia on 02.07.18.
  */
-/**
- * Created by yevheniia on 01.07.18.
- */
 
 function scatter() {
+
+
 
 var ageChart = d3.select("#agesvg").transition();
 
@@ -97,14 +96,32 @@ d3.csv("data/dataset.csv", function (error, data) {
 
         .style("opacity", "0.5")
         .on("mouseover", function (d) {
+               var xtext = 'жінок',
+                xnumber = d.womenScientists,
+                ytext = "чоловіків",
+                ynumber = d.menScientists,
+                xtext2 = 'молодих вчених',
+                xnumber2 = d.young,
+                ytext2 = "старих",
+                ynumber2 = d.old;
 
             div.transition()
                 .duration(200)
                 .style("opacity", .9);
 
-            div.html(d.name + " старих " + d.old + "; молодих: " + d.young)
-                .style("left", (d3.event.pageX) + 10 + "px")
-                .style("top", (d3.event.pageY) - 100 + "px")
+            if (isInView($('#step3')) || isInView($('#step4'))) {
+
+                div.html(d.name + "<br>" + "<span id='genderspan'> " + xtext + ": " + xnumber + "; " + ytext + ": " + ynumber)
+                    .style("left", (d3.event.pageX) + 10 + "px")
+                    .style("top", (d3.event.pageY) - 100 + "px")
+            }
+
+            if (isInView($('#step5')) || isInView($('#step6'))) {
+
+                div.html(d.name + "<br>" + "<span id='agespan'>" + xtext2 + ": " + xnumber2 + "; " + ytext2 + ": " + ynumber2 + "</span>")
+                    .style("left", (d3.event.pageX) + 10 + "px")
+                    .style("top", (d3.event.pageY) - 100 + "px")
+            }
 
 
         })
@@ -117,30 +134,6 @@ d3.csv("data/dataset.csv", function (error, data) {
         });
 
 
-    // ageChart.selectAll(".dot")
-    //     .duration(durationTime)
-    //     .attr("cx", function (d) {
-    //         return x(d.womenScientists);
-    //     })
-    //     .attr("cy", function (d) {
-    //         return y(d.menScientists);
-    //     })
-    //     .style("opacity", "0.5")
-    //     .on("mouseover", function (d) {
-    //
-    //         div.style("opacity", .9);
-    //
-    //         div.html(d.name + " старих " + d.old + "; молодих: " + d.young)
-    //             .style("left", (d3.event.pageX) + 10 + "px")
-    //             .style("top", (d3.event.pageY) - 100 + "px")
-    //
-    //
-    //     })
-    //     .on("mouseout", function (d) {
-    //         div.style("opacity", 0);
-    //
-    //
-    //     });
 
     if ($('#bla').length === 0) {
         scatter.append("text")
@@ -172,18 +165,8 @@ function scatterSmall() {
 
     var ageChart = d3.select("#agesvg").transition();
 
-
-
     var x = d3.scale.linear()
         .range([0, chartWidth]);
-
-    // var scatterColor = d3.scale.category10();
-    //
-    // var scatterplot = d3.select("#gender-scatter").append("svg")
-    //     .attr("width", chartWidth + chartMargin.left + chartMargin.right)
-    //     .attr("height", chartHeight + chartMargin.top + chartMargin.bottom)
-    //     .append("g")
-    //     .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
 
     d3.csv("data/dataset.csv", function (error, data) {
         if (error) throw error;
@@ -250,6 +233,8 @@ function scatterSmall() {
 
 function scatterAge() {
 
+    
+
     var ageChart = d3.select("#agesvg").transition();
     var body = d3.select("body");
 
@@ -259,10 +244,11 @@ function scatterAge() {
 
     var y = d3.scale.linear().range([chartHeight, 20]);
 
-    
+
     d3.csv("data/dataset.csv", function (error, data) {
         if (error) throw error;
-        
+
+
         
         data.forEach(function(d) {
             d.young = +d.young;
@@ -280,9 +266,9 @@ function scatterAge() {
             .tickSize(-chartWidth)
             .orient("left");
 
-        x.domain([0, 600]);
+        x.domain([0, 700]);
 
-        y.domain([0, 600]);
+        y.domain([0, 700]);
 
 
         var scatter = d3.select("#targetG");
@@ -307,6 +293,8 @@ function scatterAge() {
             });
 
 
+
+
         ageChart.select("#yAxisHint").duration(durationTime).text("від 50 років");
         ageChart.select("#xAxisHint").duration(durationTime).text(" до 50 років");
 
@@ -320,7 +308,11 @@ function scatterAge() {
             .call(xAxis);
 
 
-
+        ageChart.selectAll("#bla")
+            .duration(durationTime)
+            .attr("x", x(200))
+            .attr("y", y(308))
+        ;
 
     });
 }
@@ -349,10 +341,12 @@ function scatterAgeSmall() {
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom")
+            .tickSize(-chartHeight)
             .tickPadding(10);
 
         var yAxis = d3.svg.axis()
             .scale(y)
+            .tickSize(-chartWidth)
             .orient("left");
 
         x.domain([0, 150]);
@@ -396,7 +390,11 @@ function scatterAgeSmall() {
             .duration(durationTime)
             .call(xAxis);
 
-
+        ageChart.selectAll("#bla")
+            .duration(durationTime)
+            .attr("x", x(40))
+            .attr("y", y(115))
+        ;
 
 
     });

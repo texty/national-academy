@@ -87,7 +87,7 @@
 
         <div id="step6" class="step">
             <h2>Віковий розподіл по закладах (2015 р.)</h2>
-            <p>А тепер пропонуємо Вам дослідити, в яких закладах переважають молоді вчені (до 50 років), а в яких похилого віку (від 50 років)</p>
+            <p>Ситуація з віковим розподілом така сама як і з гендерним, в маленьких закладах кількість вчених до 50 і після 50 років приблизно однакова. В той час як у великих переважають пенсіонери.</p>
             <a class="fa" onclick="showFinance()" href="#insert"><svg  class='fa' width='50' height="50" viewBox="0 0 1000 1000">
                 <g>
                     <path d="M500,755.9L14.7,270.6c-6.2-6.2-6.2-15.6,0-21.8c6.2-6.2,15.6-6.2,21.8,0L500,712.3l463.6-463.6c6.2-6.2,15.6-6.2,21.8,0c6.2,6.2,6.2,15.6,0,21.8L500,755.9z"/>
@@ -247,7 +247,6 @@
 
     $("#toStep2").on("click", function () {
         if (isInView($('#step2'))) {
-            //fire whatever you what
             updateData()
         }
     });
@@ -255,14 +254,12 @@
 
     $("#scroll").scroll(function () {
         if (isInView($('#step2'))) {
-            //fire whatever you what
             updateData()
         }
     });
 
     $("#scroll").scroll(function () {
         if (isInView($('#step3'))) {
-            //fire whatever you what
             scatter();
             d3.select("#scatterSmall").attr("display", "block")
         }
@@ -274,7 +271,6 @@
 
     $("#scroll").scroll(function () {
         if (isInView($('#step4'))) {
-            //fire whatever you what
             scatterSmall();
         }
     });
@@ -282,17 +278,20 @@
 
     $("#scroll").scroll(function () {
         if (isInView($('#step5'))) {
-            //fire whatever you what
             scatterAge();
+
         }
     });
 
     $("#scroll").scroll(function () {
         if (isInView($('#step6'))) {
-            //fire whatever you what
             scatterAgeSmall();
         }
     });
+
+    if (window.performance){
+        window.location.href = '#step1';
+    }
 
 
 </script>

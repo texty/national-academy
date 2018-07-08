@@ -3,7 +3,7 @@
  */
 
 
-var grey = "#17273c";
+var grey = "#85a8d0";
     var div = d3.select("body").append("div")
         .attr("class", "tooltip")
         .style("opacity", 0);
