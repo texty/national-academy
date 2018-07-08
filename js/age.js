@@ -9,7 +9,22 @@ var chartMargin = {
     left: 50
 };
 
-var color = d3.scale.category20c();
+// var color = d3.scale.category20c();
+
+
+var colors = ['#ff0000','#ff5a21','#f87f36','#eb9845','#d6a94c','#bcb14e','#9cb248','#76aa3b','#4a9926','#008000'];
+
+var colors2 = ['#85a8d0','#e377c2'];
+
+
+var mycolor = d3.scale.ordinal()
+    .domain(["Від 65 років", "60-64 роки", "55-59 років", "50-54 роки", "45-49 років", "40-44 роки", "35-39 років", "30-34 роки", "25-29 років", "До 25 років"])
+    .range(colors);
+
+var mycolor2 = d3.scale.ordinal()
+    .domain(["чоловіки", "жінки"])
+    .range(colors2);
+
 
 var chartWidth, chartHeight;
 
@@ -77,8 +92,6 @@ d3.csv("data/age.csv", function(error, data) {
     });
 
 
-
-
     x.domain(d3.extent(data, function(d) { return d.year; }));
     y.domain([0, d3.max(data, function(d) { return d.percent; })]);
 
@@ -86,8 +99,6 @@ d3.csv("data/age.csv", function(error, data) {
     var dataNest = d3.nest()
         .key(function(d) {return d.age;})
         .entries(data);
-
-    var color = d3.scale.category10();  // set the colour scale
 
     // Loop through each symbol / key
     var linePath;
@@ -99,7 +110,7 @@ d3.csv("data/age.csv", function(error, data) {
         group.append("path")
             .attr("class", "line")
             .style("stroke", function() {
-                return d.color = color(d.key); })
+                return d.color = mycolor(d.key); })
             .attr("d", line(d.values))
             .attr("fill", "none")
             .attr("stroke-width", "4px");
@@ -261,7 +272,6 @@ function updateData() {
             })
             .entries(data);
 
-        var color = d3.scale.category10();  // set the colour scale
 
         // Loop through each symbol / key
         var linePath;
@@ -284,13 +294,16 @@ function updateData() {
                 .attr("d", line(data.filter(function (v) {
                     return v.sex === d.key;
                 })))
+                .style("stroke", function() {
+                    return d.color = mycolor2(d.key); })
                ;
 
 
             ageChart.select("#agesvg > g > g:nth-child(" + (i + 1) +") > text")
                 .duration(durationTime)
                 .text(d.key)
-                // .attr("fill", d.color)
+                .attr("fill", function() {
+                    return d.color = mycolor2(d.key);})
                 .attr("transform", function () {
                     var xx = d.values[7].year;
                     var yy = d.values[7].percent;

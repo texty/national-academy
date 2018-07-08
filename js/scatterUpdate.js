@@ -1,7 +1,10 @@
 /**
  * Created by yevheniia on 02.07.18.
  */
-
+var blue = "#85a8d0";
+var pink = "#e377c2";
+var red = "#d62728";
+var green = "#bcbd22";
 function scatter() {
 
 
@@ -86,11 +89,11 @@ d3.csv("data/dataset.csv", function (error, data) {
         .style("fill", function(t) {
             t.womenScientists = +t.womenScientists;
             t.menScientists = +t.menScientists;
-            if (t.womenScientists > t.menScientists) {
-                return "#85a8d0";
+            if (t.womenScientists < t.menScientists) {
+                return blue;
             }
             else {
-                return "orange"
+                return pink
             }
         })
 
@@ -285,10 +288,10 @@ function scatterAge() {
                 t.young = +t.young;
                 t.old = +t.old;
                 if (t.young > t.old) {
-                    return "#85a8d0";
+                    return green;
                 }
                 else {
-                    return "orange"
+                    return red
                 }
             });
 
@@ -368,10 +371,10 @@ function scatterAgeSmall() {
                 t.young = +t.young;
                 t.old = +t.old;
                 if (t.young > t.old) {
-                    return "#85a8d0";
+                    return green;
                 }
                 else {
-                    return "orange"
+                    return red
                 }
             });
 
