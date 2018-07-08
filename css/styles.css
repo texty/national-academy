@@ -1,4 +1,17 @@
 @charset "UTF-8";
+@keyframes blink {
+  50% {
+    opacity: 0.5; } }
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.5; } }
+.blink {
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite; }
+
+.fa:hover {
+  fill: orange; }
+
 body {
   font-family: 'Play', sans-serif;
   font-size: 10px;
@@ -13,6 +26,7 @@ body {
   margin: 0 auto; }
   @media (min-width: 1824px) {
     .content {
+      display: grid;
       grid-template-columns: 50% 50%;
       width: 50%;
       margin: 0 auto; } }
@@ -23,9 +37,14 @@ body {
       margin: 0 0; } }
 
 #financeChartsContainer {
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
   display: none; }
+  @media (min-width: 1200px) {
+    #financeChartsContainer {
+      grid-template-columns: 100%;
+      width: 70%;
+      margin: 0 auto; } }
   @media (min-width: 1824px) {
     #financeChartsContainer {
       width: 50%;
@@ -57,12 +76,16 @@ h1 {
   width: 70%;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   margin-top: 50px; }
 
 h2 {
   font-size: 20px;
   width: 70%; }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+    h2 {
+      font-size: 17px;
+      width: 90%; } }
 
 h3 {
   font-size: 20px;
@@ -82,6 +105,10 @@ h3 {
 p {
   font-size: 18px;
   line-height: 1.6; }
+  @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+    p {
+      font-size: 13px;
+      width: 100%; } }
 
 .step > p {
   width: 80%; }
@@ -102,7 +129,7 @@ p {
   opacity: 0.7; }
   @media (max-width: 800px) {
     .rect {
-      width: 3px; } }
+      width: 2.5px; } }
 
 #finance-chart > .x.axis path {
   display: none; }

@@ -18,10 +18,9 @@ var grey = "#17273c";
 var width, height;
 
 if (screen.width < 800) {
-    margin.left = 50;
-
-    width = window.innerWidth  - margin.left  - margin.right - 50;
-    height = 300;
+    margin.left = 30;
+    width = window.innerWidth  - margin.left  - margin.right;
+    height = 200;
 } else if(screen.width >= 800 && screen.width < 1824 ) {
     margin.left = 50;
     width = window.innerWidth / 1.3- margin.left - margin.right;
@@ -75,17 +74,27 @@ if (screen.width < 800) {
         console.log(data);
 //    console.log(nestedData);
 
-        var x_category = d3.scale.linear()
-            .range([10, width / 1.3]);
+        var x_category;
+        x_category = d3.scale.linear()
+            .range([10, width / 100]);
 
+        if (screen.width < 800) {
+            x_category = d3.scale.linear()
+                .range([2, width / 1.4]);
+        }
 
         var x_defect = d3.scale.ordinal().domain(rangeBands).rangeRoundBands([0, width], .1);
         var x_category_domain = x_defect.rangeBand() * rangeBands.length;
         x_category.domain([0, x_category_domain]);
 
 
-        var y = d3.scale.linear()
+        var y;
+        y = d3.scale.linear()
             .range([height, 100]);
+        if (screen.width < 800) {
+            y = d3.scale.linear()
+                .range([height, 10]);
+        }
 
         y.domain([0, d3.max(data, function (cat) {
             return d3.max(cat.values, function (def) {
@@ -372,16 +381,27 @@ function totalFinance() {
         console.log(data);
 //    console.log(nestedData);
 
-        var x_category = d3.scale.linear()
+        var x_category;
+        x_category = d3.scale.linear()
             .range([10, width / 1.3]);
+
+        if (screen.width < 800) {
+            x_category = d3.scale.linear()
+                .range([2, width / 1.4]);
+        }
 
 
         var x_defect = d3.scale.ordinal().domain(rangeBands).rangeRoundBands([0, width], .1);
         var x_category_domain = x_defect.rangeBand() * rangeBands.length;
         x_category.domain([0, x_category_domain]);
 
-        var y = d3.scale.linear()
+        var y;
+        y = d3.scale.linear()
             .range([height, 100]);
+        if (screen.width < 800) {
+            y = d3.scale.linear()
+                .range([height, 10]);
+        }
 
 
         var yAxis = d3.svg.axis()
@@ -577,16 +597,27 @@ function perPersonFinance() {
         console.log(data);
 //    console.log(nestedData);
 
-        var x_category = d3.scale.linear()
+        var x_category;
+        x_category = d3.scale.linear()
             .range([10, width / 1.3]);
+
+        if (screen.width < 800) {
+            x_category = d3.scale.linear()
+                .range([2, width / 1.4]);
+        }
 
 
         var x_defect = d3.scale.ordinal().domain(rangeBands).rangeRoundBands([0, width], .1);
         var x_category_domain = x_defect.rangeBand() * rangeBands.length;
         x_category.domain([0, x_category_domain]);
 
-        var y = d3.scale.linear()
+        var y;
+        y = d3.scale.linear()
             .range([height, 100]);
+        if (screen.width < 800) {
+            y = d3.scale.linear()
+                .range([height, 10]);
+        }
 
 
         var yAxis = d3.svg.axis()
@@ -784,16 +815,27 @@ function foreignFinance() {
         console.log(data);
 //    console.log(nestedData);
 
-        var x_category = d3.scale.linear()
+        var x_category;
+        x_category = d3.scale.linear()
             .range([10, width / 1.3]);
+
+        if (screen.width < 800) {
+            x_category = d3.scale.linear()
+                .range([2, width / 1.4]);
+        }
 
 
         var x_defect = d3.scale.ordinal().domain(rangeBands).rangeRoundBands([0, width], .1);
         var x_category_domain = x_defect.rangeBand() * rangeBands.length;
         x_category.domain([0, x_category_domain]);
 
-        var y = d3.scale.linear()
+        var y;
+        y = d3.scale.linear()
             .range([height, 100]);
+        if (screen.width < 800) {
+            y = d3.scale.linear()
+                .range([height, 10]);
+        }
 
 
         var yAxis = d3.svg.axis()
@@ -817,9 +859,9 @@ function foreignFinance() {
             .duration(durationTime)
             .call(yAxis);
 
-        svg.select(".x.axis")
-            .duration(durationTime)
-            .call(xAxis);
+        // svg.select(".x.axis")
+        //     .duration(durationTime)
+        //     .call(xAxis);
 
 
 
