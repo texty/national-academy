@@ -176,21 +176,6 @@ d3.csv("data/age.csv", function(error, data) {
         .text("")
     ;
 
-    // Add the Y Axis
-    // ageChart.append("g")
-    //     .attr("class", "y axis")
-    //     .call(yAxis);
-
-    // ageChart.append("text")
-    //     .attr("y", 50)
-    //     .attr("id", "ageChartTitle")
-    //     .style("font-size", "18px")
-    //     .style("letter-spacing", "1px")
-    //     .style("font-weight", "bold")
-    //     .html("Структурні частки окремих вікових груп серед всіх дослідників НАН, %")
-    //     .attr("dy", 0)
-    //     .call(wrap, chartWidth);
-
     ageChart.append("g")
         .attr("class", "y axis")
         .call(yAxis)
@@ -348,3 +333,143 @@ function updateData() {
 
 // d3.select("#agesvg > g > g.x.axis > g.tick:nth-child(1) > text").remove();
 
+function toStart () {
+
+    var ageChart = d3.select("#agesvg").transition();
+
+
+    d3.csv("data/age.csv", function (error, data) {
+        if (error) throw error;
+
+
+        data.forEach(function(d) {
+            d.year = parseDate(d.year);
+            d.percent = +d.percent;
+        });
+
+
+
+        var x = d3.time.scale().range([0, chartWidth]);
+
+        var xAxis = d3.svg.axis().scale(x)
+            .orient("bottom")
+            .ticks(10)
+            .tickValues(valuesForXAxis)
+            .tickSize(-chartHeight)
+            .tickPadding(10);
+
+        x.domain(d3.extent(data, function (d) {
+            return d.year;
+        }));
+
+        y.domain([0, d3.max(data, function (d) {
+            return d.percent;
+        })]);
+
+        ageChart.select(".y.axis")
+            .duration(durationTime)
+            .call(yAxis);
+
+        ageChart.select(".x.axis")
+            .duration(durationTime)
+            .call(xAxis);
+
+
+        var dataNest = d3.nest()
+            .key(function(d) {return d.age;})
+            .entries(data);
+
+
+        // d3.select("#agesvg").remove();
+
+
+        var linePath;
+
+        dataNest.forEach(function(d, i) {
+
+            ageChart.select("#agesvg > g > g:nth-child(3) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(4) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(5) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(6) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(7) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(8) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(9) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(10) > path").duration(durationTime).style("display", "block").style("opacity", "1");
+
+
+
+
+
+
+            ageChart.select("#agesvg > g > g:nth-child(" + (i + 1) +") > path")
+                .duration(durationTime)
+                .attr("d", line(data.filter(function (v) {
+                    return v.age === d.key;
+                })))
+                .style("stroke", function() {
+                    return d.color = mycolor(d.key); })
+            ;
+
+
+
+
+            ageChart.select("#agesvg > g > g:nth-child(" + (i + 1) +") > text")
+                .duration(durationTime)
+                .text(d.key)
+                .attr("fill", function() {
+                    return d.color = mycolor(d.key);})
+                .attr("transform", function () {
+
+                    if (d.key === "30-34 роки") {
+                        xx = d.values[1].year;
+                        yy = d.values[2].percent + 0.5;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+                    if (d.key === "45-49 років") {
+                        xx = d.values[7].year;
+                        yy = d.values[7].percent - 0.5;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+                    if (d.key === "60-64 роки") {
+                        xx = d.values[7].year;
+                        yy = d.values[7].percent + 0.1;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+                    if (d.key === "50-54 роки") {
+                        // xx = d.values[0].year;
+                        xx = parseDate("2007-06-01");
+                        yy = d.values[0].percent - 0.5;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+
+                    else {
+                        xx = d.values[7].year;
+                        yy = d.values[7].percent-0.5;
+                        return "translate(" + x(xx) + "," + y(yy) + ")";
+                    }
+
+
+
+                });
+
+
+            ageChart.select("#agesvg > g > g:nth-child(3) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(4) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(5) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(6) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(7) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(8) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(9) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+            ageChart.select("#agesvg > g > g:nth-child(10) > text").duration(durationTime).style("display", "block").style("opacity", "1");
+
+
+
+        });
+
+
+    });
+
+
+
+    
+}

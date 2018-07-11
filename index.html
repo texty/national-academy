@@ -253,6 +253,14 @@
         }
     });
 
+    $("#scroll").scroll(function () {
+        if (isInView($('#step1'))) {
+            toStart();
+//            d3.selectAll(".ageChartLabels").style("opacity","1");
+
+        }
+    });
+
 
     $("#scroll").scroll(function () {
         if (isInView($('#step2'))) {
@@ -263,7 +271,8 @@
     $("#scroll").scroll(function () {
         if (isInView($('#step3'))) {
             scatter();
-            d3.select("#scatterSmall").attr("display", "block")
+            $("#scatterSmall").attr("display", "block");
+            $(".dot").css("opacity","1");
         }
         else {
             d3.select("#scatterSmall").attr("display", "none")
@@ -288,6 +297,7 @@
     $("#scroll").scroll(function () {
         if (isInView($('#step6'))) {
             scatterAgeSmall();
+            showFinance()
         }
     });
 

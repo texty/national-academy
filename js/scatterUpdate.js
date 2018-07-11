@@ -217,6 +217,16 @@ function scatterSmall() {
             })
             .attr("cy", function (d) {
                 return y(d.menScientists);
+            })
+            .style("fill", function(t) {
+                t.womenScientists = +t.womenScientists;
+                t.menScientists = +t.menScientists;
+                if (t.womenScientists < t.menScientists) {
+                    return blue;
+                }
+                else {
+                    return pink
+                }
             });
 
         ageChart.selectAll("#bla")
@@ -402,5 +412,9 @@ function scatterAgeSmall() {
 
     });
 }
+
+
+
+
 
 

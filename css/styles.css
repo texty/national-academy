@@ -15,8 +15,8 @@
 body {
   font-family: 'Play', sans-serif;
   font-size: 10px;
-  color: #17273c;
-  background-color: #fffceb;
+  color: white;
+  background-color: #17273c;
   line-height: 1.6; }
 
 .content {
@@ -58,7 +58,7 @@ body {
 
 #scroll {
   height: 100vh;
-  overflow-y: hidden;
+  overflow-y: auto;
   overflow-x: hidden;
   grid-column: 1/2; }
   @media (max-width: 800px) {
@@ -145,7 +145,7 @@ div.tooltip {
   padding: 2px;
   font-size: 9px;
   line-height: 1.4;
-  background: #fffceb;
+  background: #17273c;
   border: 0px;
   pointer-events: none;
   z-index: 11; }
@@ -198,7 +198,7 @@ div.tooltip {
   pointer-events: none; }
 
 .modal-content {
-  background-color: #fffceb;
+  background-color: #17273c;
   margin: auto;
   padding: 20px;
   border: 1px solid white;
@@ -221,18 +221,18 @@ path.domain {
   stroke-width: 0; }
 
 g > text:not(.ageChartLabels) {
-  color: #17273c;
-  fill: #17273c; }
+  color: white;
+  fill: white; }
 
 g.tick > line {
   stroke-dasharray: 3, 3;
   stroke-width: 0.3px; }
 
 #yAxisHint, #xAxisHint {
-  fill: #17273c; }
+  fill: white; }
 
 #financeTitle {
-  color: #17273c; }
+  color: white; }
 
 a:not(.fa) {
   color: #85a8d0;
@@ -240,20 +240,20 @@ a:not(.fa) {
   text-decoration: none; }
 
 a.fa {
-  color: #17273c;
+  color: white;
   margin-left: 25%; }
   @media (max-width: 800px) {
     a.fa {
       display: none; } }
 
 svg.fa {
-  fill: #17273c; }
+  fill: white; }
 
 a:not(.fa):visited {
-  color: #17273c; }
+  color: white; }
 
 a.fa:visited {
-  color: #17273c;
+  color: white;
   text-decoration: none; }
 
 #insert {
