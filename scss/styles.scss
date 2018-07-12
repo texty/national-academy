@@ -59,8 +59,8 @@ body {
   //position:sticky;
   //top:0;
   //left:0;
-  width:70%;
-  margin:0 auto;
+  width:90%;
+  margin:0 0 0 10%;
 
   @media (min-width:1824px) {
     display:grid;
@@ -75,6 +75,11 @@ body {
     width:90%;
     margin:0 0;
   }
+}
+
+#transition-div {
+  height:40vh;
+
 }
 
 #financeChartsContainer {
@@ -103,9 +108,9 @@ body {
 
 
 #scroll {
-  height:80vh;
-  overflow-y:auto;
-  overflow-x:hidden;
+  //height:80vh;
+  //overflow-y:auto;
+  //overflow-x:hidden;
   grid-column: 1/2;
 
   @media (max-width:800px) {
@@ -123,6 +128,11 @@ body {
 
 }
 
+
+#age-chart {
+  position:relative;
+}
+
 .step {
   height:150vh;
 
@@ -134,7 +144,7 @@ body {
 
 h1 {
   font-size: 40px;
-  width:70%;
+  width:100%;
   margin:0 auto;
   text-align: center;
   margin-bottom:20px;
@@ -156,9 +166,8 @@ h2 {
 
 h3 {
   font-size: 20px;
-  width:70%;
-  margin:0 auto;
-  margin-bottom:15vh;
+  width:80%;
+  margin:0 10% 15vh 10% ;
   font-weight: 100;
 
   @media (min-width:1824px) {
@@ -215,6 +224,7 @@ p {
 
 #finance-chart > .x.axis path {
   display: none;
+
 }
 
 .category.category-natural-science {
@@ -381,6 +391,7 @@ a.fa:visited {
   opacity:1;
 
 
+
 }
 
 #targetG > g:nth-child(6) > text {
@@ -418,6 +429,8 @@ button:active {
     display:none;
   }
 }
+
+
 
 
 

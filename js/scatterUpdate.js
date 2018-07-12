@@ -109,7 +109,7 @@ d3.csv("data/dataset.csv", function (error, data) {
                 ynumber2 = d.old;
 
             div.transition()
-                .duration(200)
+                .duration(durationTime)
                 .style("opacity", .9);
 
             if (isInView($('#step3')) || isInView($('#step4'))) {
@@ -130,7 +130,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         })
         .on("mouseout", function (d) {
             div.transition()
-                .duration(200)
+                .duration(durationTime)
                 .style("opacity", 0);
 
 
@@ -148,7 +148,7 @@ d3.csv("data/dataset.csv", function (error, data) {
     }
     else {
         ageChart.select("#bla")
-            .duration(500)
+            .duration(durationTime)
             .attr("x", x(218))
             .attr("y", y(294))
         ;
@@ -287,7 +287,7 @@ function scatterAge() {
         var scatter = d3.select("#targetG");
 
         ageChart.selectAll(".dot")
-            .duration(750)
+            .duration(durationTime)
             .attr("cx", function (k) {
                 return x(k.young);
             })
@@ -370,7 +370,7 @@ function scatterAgeSmall() {
         var scatter = d3.select("#targetG");
 
         ageChart.selectAll(".dot")
-            .duration(750)
+            .duration(durationTime)
             .attr("cx", function (k) {
                 return x(k.young);
             })

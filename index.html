@@ -18,6 +18,7 @@
 
 
 <div class="content">
+
     <div id="scroll">
         <div id="step1" class="step">
             <h2>Структурні частки окремих вікових груп серед дослідників НАНУ</h2>
@@ -111,7 +112,7 @@
 
 
 </div>
-
+<div id="transition-div"></div>
 <div id="financeChartsContainer">
     <h2>Фінансування</h2>
     <p>Заклади НАНУ можна поділити на чотири категорії за спеціалізаціє: природничі науки, технічні, гуманітарні і соціальні. Кожен з цих категорій має власну специфіку фінансування. У соціогуманітарних організаціях забезпечити високий рівень питомого фінансування легше через відсутність значних матеріальних витрат. А ось, наприклад, в Інституті проблем безпеки атомних електростанцій, що займає перше місце за питомим фінансуванням на робітникам, частка матеріальних витрат об'єктивно вища.
@@ -237,7 +238,7 @@
 
     eventFire(span, 'click');
 
-    var durationTime = 750;
+    var durationTime = 400;
 
 
     var div = d3.select("body").append("div")
@@ -254,23 +255,26 @@
         }
     });
 
-    $("#scroll").scroll(function () {
+    $(window).scroll(function () {
         if (isInView($('#step1'))) {
             toStart();
             $("#bla").css("opacity","0");
+            $("#age-chart").css("position", "relative")
 
         }
     });
 
 
-    $("#scroll").scroll(function () {
+    $(window).scroll(function () {
         if (isInView($('#step2'))) {
-            updateData()
+            updateData();
             $("#bla").css("opacity","0");
+            $("#age-chart").css("position", "fixed").css("top", "0")
+
         }
     });
 
-    $("#scroll").scroll(function () {
+    $(window).scroll(function () {
         if (isInView($('#step3'))) {
             scatter();
             $("#scatterSmall").attr("display", "block");
@@ -283,24 +287,34 @@
 
     });
 
-    $("#scroll").scroll(function () {
+    $(window).scroll(function () {
         if (isInView($('#step4'))) {
             scatterSmall();
         }
     });
 
 
-    $("#scroll").scroll(function () {
+    $(window).scroll(function () {
         if (isInView($('#step5'))) {
             scatterAge();
 
         }
     });
 
-    $("#scroll").scroll(function () {
+    $(window).scroll(function () {
         if (isInView($('#step6'))) {
             scatterAgeSmall();
-            showFinance()
+            showFinance();
+            $("#age-chart").css("position", "fixed");
+//
+
+        }
+    });
+
+    $(window).scroll(function () {
+        if (isInView($('#transition-div'))) {
+            $("#age-chart").css("position", "relative")
+
         }
     });
 
