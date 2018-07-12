@@ -37,8 +37,8 @@ if (screen.width < 800) {
    chartWidth = (window.innerWidth / 2.5) - chartMargin.left - chartMargin.right;
    chartHeight = (window.innerWidth / 2.5) - chartMargin.top - chartMargin.bottom;
 } else if (screen.width >= 1824) {
-    chartWidth = (window.innerWidth / 5) - chartMargin.left - chartMargin.right;
-    chartHeight = (window.innerWidth / 5) - chartMargin.top - chartMargin.bottom;
+    chartWidth = (window.innerWidth / 3) - chartMargin.left - chartMargin.right;
+    chartHeight = (window.innerWidth / 3) - chartMargin.top - chartMargin.bottom;
 }
 
 
