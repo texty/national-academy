@@ -272,7 +272,7 @@
         if (isInView($('#step3'))) {
             scatter();
             $("#scatterSmall").attr("display", "block");
-            $(".dot").css("opacity","1");
+            $(".dot").css("opacity","0.5");
         }
         else {
             d3.select("#scatterSmall").attr("display", "none")
@@ -302,7 +302,7 @@
     });
 
     if (window.performance){
-        window.location.href = '#step1';
+        window.location.href = '#';
     }
 
 
