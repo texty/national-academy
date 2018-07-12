@@ -124,7 +124,7 @@ body {
 }
 
 .step {
-  height:100vh;
+  height:150vh;
 
   @media (max-width:800px) {
     height:auto;
@@ -388,7 +388,29 @@ a.fa:visited {
 }
 
 button {
-  margin-right: 20px;
+  font-family: 'Play', sans-serif; // непогано
+  -moz-border-radius:8px;
+  -webkit-border-radius:8px;
+  border-radius:2px;
+  display:inline-block;
+  cursor:pointer;
+  color: #121212;
+
+  padding:5px 8px;
+  text-decoration:none;
+}
+
+button:hover {
+
+}
+
+button:focus {
+  outline: -webkit-focus-ring-color auto 0px;
+}
+
+button:active {
+  position:relative;
+  top:1px;
 }
 
 .nanu-labels, .right-axis, #financeTitle {
