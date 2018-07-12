@@ -57,7 +57,7 @@ body {
       display: block; } }
 
 #scroll {
-  height: 100vh;
+  height: 80vh;
   overflow-y: auto;
   overflow-x: hidden;
   grid-column: 1/2; }
