@@ -1,6 +1,11 @@
 /**
  * Created by yevheniia on 06.07.18.
  */
+var blue = "#85a8d0";
+var pink = "#e377c2";
+var red = "#d62728";
+var green = "#bcbd22";
+
 var chartMargin = {
     top: 50,
     right: 50,
@@ -370,8 +375,16 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("cy", function (d) {
             return y(d.menScientists);
         })
-        .style("fill", "orange")
-
+        .style("fill", function(t) {
+            t.womenScientists = +t.womenScientists;
+            t.menScientists = +t.menScientists;
+            if (t.womenScientists < t.menScientists) {
+                return blue;
+            }
+            else {
+                return pink
+            }
+        })
         .style("opacity", "0.5")
         .on("mouseover", function (d) {
 
@@ -419,7 +432,7 @@ d3.csv("data/dataset.csv", function (error, data) {
 });
 
 
-/*----------------- chart 3--------------*/
+/*----------------- chart 4--------------*/
 
 d3.csv("data/dataset.csv", function (error, data) {
     if (error) throw error;
@@ -474,7 +487,16 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("cy", function (d) {
             return y(d.menScientists);
         })
-        .style("fill", "orange")
+        .style("fill", function(t) {
+            t.womenScientists = +t.womenScientists;
+            t.menScientists = +t.menScientists;
+            if (t.womenScientists < t.menScientists) {
+                return blue;
+            }
+            else {
+                return pink
+            }
+        })
 
         .style("opacity", "0.5")
         .on("mouseover", function (d) {
@@ -521,5 +543,234 @@ d3.csv("data/dataset.csv", function (error, data) {
         .text("Чоловіки");
 
 });
+
+
+
+
+/*----------------- chart 5--------------*/
+
+d3.csv("data/dataset.csv", function (error, data) {
+    if (error) throw error;
+
+
+    data.forEach(function (d) {
+        d.workers = +d.workers;
+        d.young = +d.young;
+        d.old = +d.old;
+    });
+
+
+    var x = d3.scale.linear()
+        .range([0, chartWidth]);
+    var y = d3.scale.linear()
+        .range([chartHeight, 20]);
+//
+    var scatterplot = d3.select("#chart5").append("svg")
+        .attr("width", chartWidth + chartMargin.left + chartMargin.right)
+        .attr("height", chartHeight + chartMargin.top + chartMargin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickSize(-chartHeight)
+        .tickPadding(10);
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickSize(-chartWidth)
+        .tickPadding(10);
+
+
+    x.domain([0, 650]);
+    y.domain([0, 650]);
+
+//
+    scatterplot.selectAll(".dot")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "dot")
+        // .style("opacity","0")
+        .attr("r", function (d) {
+            return "5px"
+        })
+        .attr("cx", function (d) {
+            return x(d.young);
+        })
+        .attr("cy", function (d) {
+            return y(d.old);
+        })
+        .style("fill", function(t) {
+            t.young = +t.young;
+            t.old = +t.old;
+            if (t.young > t.old) {
+                return green;
+            }
+            else {
+                return red
+            }
+        })
+
+        .style("opacity", "0.5")
+        .on("mouseover", function (d) {
+
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+
+            div.html(d.name + "<br>" + "Молодих: " + d.young + "<br>" + "Старих " + d.old)
+                .style("left", (d3.event.pageX) + 10 + "px")
+                .style("top", (d3.event.pageY) - 100 + "px")
+
+
+        })
+        .on("mouseout", function (d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
+
+
+        });
+
+    scatterplot.append("g")
+        .attr("class", "x axis")
+        .style("display", "block")
+        .attr("transform", "translate(0," + chartHeight + ")")
+        .call(xAxis)
+        .append("text")
+        .attr("id", "xAxisHint")
+        .attr("transform",
+            "translate(" + (chartWidth + 20) + " ," +
+            (0) + ")")
+        .style("text-anchor", "middle")
+        .text("Жінки");
+
+    scatterplot.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("id", "yAxisHint")
+        .attr("y", -5)
+        .attr("dy", ".71em")
+        .style("text-anchor", "middle")
+        .text("Чоловіки");
+
+});
+
+
+/*----------------- chart 5--------------*/
+
+d3.csv("data/dataset.csv", function (error, data) {
+    if (error) throw error;
+
+
+    data.forEach(function (d) {
+        d.workers = +d.workers;
+        d.young = +d.young;
+        d.old = +d.old;
+    });
+
+
+    var x = d3.scale.linear()
+        .range([0, chartWidth]);
+    var y = d3.scale.linear()
+        .range([chartHeight, 20]);
+//
+    var scatterplot = d3.select("#chart6").append("svg")
+        .attr("width", chartWidth + chartMargin.left + chartMargin.right)
+        .attr("height", chartHeight + chartMargin.top + chartMargin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickSize(-chartHeight)
+        .tickPadding(10);
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left")
+        .tickSize(-chartWidth)
+        .tickPadding(10);
+
+
+    x.domain([0, 150]);
+    y.domain([0, 150]);
+
+//
+    scatterplot.selectAll(".dot")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "dot")
+        // .style("opacity","0")
+        .attr("r", function (d) {
+            return "5px"
+        })
+        .attr("cx", function (d) {
+            return x(d.young);
+        })
+        .attr("cy", function (d) {
+            return y(d.old);
+        })
+        .style("fill", function(t) {
+            t.young = +t.young;
+            t.old = +t.old;
+            if (t.young > t.old) {
+                return green;
+            }
+            else {
+                return red
+            }
+        })
+
+        .style("opacity", "0.5")
+        .on("mouseover", function (d) {
+
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+
+            div.html(d.name + "<br>" + "Молодих: " + d.young + "<br>" + "Старих " + d.old)
+                .style("left", (d3.event.pageX) + 10 + "px")
+                .style("top", (d3.event.pageY) - 100 + "px")
+
+
+        })
+        .on("mouseout", function (d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", 0);
+
+
+        });
+
+    scatterplot.append("g")
+        .attr("class", "x axis")
+        .style("display", "block")
+        .attr("transform", "translate(0," + chartHeight + ")")
+        .call(xAxis)
+        .append("text")
+        .attr("id", "xAxisHint")
+        .attr("transform",
+            "translate(" + (chartWidth + 20) + " ," +
+            (0) + ")")
+        .style("text-anchor", "middle")
+        .text("Жінки");
+
+    scatterplot.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("id", "yAxisHint")
+        .attr("y", -5)
+        .attr("dy", ".71em")
+        .style("text-anchor", "middle")
+        .text("Чоловіки");
+
+});
+
 
 
