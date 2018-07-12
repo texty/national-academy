@@ -195,7 +195,7 @@ d3.csv("data/age.csv", function(error, data) {
         .attr("stroke-dasharray", totalLength[0] + " " + totalLength[0] )
         .attr("stroke-dashoffset", totalLength[0])
         .transition()
-        .duration(1000)
+        .duration(500)
         .ease("linear")
         .attr("stroke-dashoffset", 0);
 

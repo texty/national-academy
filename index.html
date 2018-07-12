@@ -318,9 +318,13 @@
         }
     });
 
-    if (window.performance){
-        window.location.href = '#';
-    }
+//    if (window.performance){
+////        window.location.href = '#step1';
+////        $("#scroll").scrollTop(0);
+//
+//    }
+
+    window.onbeforeunload = function() {window.scrollTo(0,0);}
 
 d3.selectAll("button").on("click", function(){
 
