@@ -368,7 +368,7 @@ a:not(.fa) {
 }
 
 a.fa {
-  color: $background;
+  color: #c6c6c6;
   margin-left: 25%;
 
   @media (max-width:800px) {
@@ -377,7 +377,7 @@ a.fa {
 }
 
 svg.fa {
-  fill: $background;
+  fill: #dedede;
 }
 
 a:not(.fa):visited {

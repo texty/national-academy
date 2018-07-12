@@ -244,14 +244,14 @@ a:not(.fa) {
   text-decoration: none; }
 
 a.fa {
-  color: #17273c;
+  color: #c6c6c6;
   margin-left: 25%; }
   @media (max-width: 800px) {
     a.fa {
       display: none; } }
 
 svg.fa {
-  fill: #17273c; }
+  fill: #dedede; }
 
 a:not(.fa):visited {
   color: #17273c; }
