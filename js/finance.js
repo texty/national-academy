@@ -482,7 +482,7 @@ function totalFinance() {
     })
     .attr("fill", function (d) {
         if (d.sum > 70000) {
-            return orange
+            return "orange"
         }
         else {
             return grey
