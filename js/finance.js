@@ -471,7 +471,7 @@ function totalFinance() {
 
 
 
-        defect_g.selectAll(".rect")
+ defect_g.selectAll(".rect")
     .duration(750)
     .attr("y", function (d) {
     return y(d.sum);
@@ -482,12 +482,13 @@ function totalFinance() {
     })
     .attr("fill", function (d) {
         if (d.sum > 70000) {
-            return "orange"
+            return orange
         }
         else {
             return grey
         }
-    })
+    });
+
 
 
 

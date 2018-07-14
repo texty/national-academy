@@ -1,4 +1,26 @@
 @charset "UTF-8";
+#logo-icons {
+  display: grid;
+  grid-template-columns: 150px auto 80px; }
+
+.logo {
+  width: 150px;
+  grid-column: 1/2; }
+
+.social-icons {
+  grid-column: 3/4;
+  display: grid;
+  grid-template-columns: 40px 40px; }
+
+.facebook {
+  width: 30px;
+  margin-right: 10px;
+  grid-column: 1/2; }
+
+.twitter {
+  width: 30px;
+  grid-column: 2/3; }
+
 @keyframes blink {
   50% {
     opacity: 0.5; } }
