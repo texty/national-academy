@@ -137,6 +137,25 @@ d3.csv("data/dataset.csv", function (error, data) {
         });
 
 
+    ageChart.selectAll(".dot")
+        .duration(durationTime)
+        .attr("cx", function (d) {
+            return x(d.womenScientists);
+        })
+        .attr("cy", function (d) {
+            return y(d.menScientists);
+        })
+        .style("fill", function(t) {
+            t.womenScientists = +t.womenScientists;
+            t.menScientists = +t.menScientists;
+            if (t.womenScientists < t.menScientists) {
+                return blue;
+            }
+            else {
+                return pink
+            }
+        });
+
 
     if ($('#bla').length === 0) {
         scatter.append("text")

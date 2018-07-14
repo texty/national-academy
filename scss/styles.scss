@@ -1,4 +1,7 @@
+@import "mq";
 @import "header";
+@import "footer";
+
 
 $background:#17273c;
 $textcolor: #fffceb;
@@ -50,6 +53,8 @@ body {
   color: $background;
   background-color: $textcolor;
   line-height: 1.6;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -383,7 +388,7 @@ svg.fa {
 }
 
 a:not(.fa):visited {
-  color: $background
+  //color: $background
 }
 
 a.fa:visited {
