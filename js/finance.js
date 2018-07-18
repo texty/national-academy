@@ -321,7 +321,7 @@ if (screen.width < 800) {
             .style("font-size", "18px")
             .style("letter-spacing", "1px")
             .style("font-weight", "bold")
-            .text("Питоме фінансування на робітника (2015 р.)")
+            .text("Фінансування на працівника (2015 р.)")
         ;
 
         // svg.append("text")
@@ -764,9 +764,7 @@ function perPersonFinance() {
 
         svg.select("#financeTitle")
             .duration(750)
-            .text("Питоме фінансування на робітника (2015 р.)")
-
-
+            .text("Фінансування на працівника (2015 р.)")
     });
 
 }
