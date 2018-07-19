@@ -380,7 +380,8 @@ function toStart () {
             .entries(data);
 
 
-        // d3.select("#agesvg").remove();
+    ageChart.select("#yAxisHint").duration(durationTime).text("%");
+    ageChart.select("#xAxisHint").duration(durationTime).text("");
 
 
         var linePath;
