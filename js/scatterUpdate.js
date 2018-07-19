@@ -247,7 +247,10 @@ function scatterSmall() {
                     return pink
                 }
             });
-
+        
+ageChart.select("#yAxisHint").duration(durationTime).text("чоловіків");
+ageChart.select("#xAxisHint").duration(durationTime).text("жінок");
+        
         ageChart.selectAll("#bla")
             .duration(durationTime)
             .attr("x", x(41))
