@@ -5,24 +5,24 @@
 var age_data;
 
 
-// function retrieve_age_data(cb) {
-//     if (age_data) return cb(age_data);
-//
-//     return d3.csv("data/age.csv", function(err, data){
-//         if (err) throw err;
-//
-//         data.forEach(function (d) {
-//             d.year = parseDate(d.year);
-//             d.percent = +d.percent;
-//         });
-//
-//
-//         if (cb) return cb(age_data);
-//         return;
-//     })
-// }
-//
-//
+function retrieve_age_data(cb) {
+    if (age_data) return cb(age_data);
+
+    return d3.csv("data/age.csv", function(err, data){
+        if (err) throw err;
+
+        data.forEach(function (d) {
+            d.year = parseDate(d.year);
+            d.percent = +d.percent;
+        });
+
+
+        if (cb) return cb(data);
+        return;
+    })
+}
+
+
 
 var sex_data;
 function retrieve_sex_data(cb) {
@@ -421,16 +421,16 @@ function toStart () {
     var ageChart = d3.select("#agesvg").transition();
 
 
-    d3.csv("data/age.csv", function (error, data) {
-        if (error) throw error;
+    // d3.csv("data/age.csv", function (error, data) {
+    //     if (error) throw error;
+    //
+    //
+    //     data.forEach(function(d) {
+    //         d.year = parseDate(d.year);
+    //         d.percent = +d.percent;
+    //     });
 
-
-        data.forEach(function(d) {
-            d.year = parseDate(d.year);
-            d.percent = +d.percent;
-        });
-
-
+        retrieve_age_data(function(data){
 
         var x = d3.time.scale().range([0, chartWidth]);
 
