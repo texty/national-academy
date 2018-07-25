@@ -188,16 +188,16 @@ d3.csv("data/age.csv", function(error, data) {
 
 
 
-    var totalLength = [$('path.line')[9].getTotalLength() ];
-
-    console.log(totalLength);
-    d3.selectAll("path.line")
-        .attr("stroke-dasharray", totalLength[0] + " " + totalLength[0] )
-        .attr("stroke-dashoffset", totalLength[0])
-        .transition()
-        .duration(500)
-        .ease("linear")
-        .attr("stroke-dashoffset", 0);
+    // var totalLength = [$('path.line')[9].getTotalLength() ];
+    //
+    // console.log(totalLength);
+    // d3.selectAll("path.line")
+    //     .attr("stroke-dasharray", totalLength[0] + " " + totalLength[0] )
+    //     .attr("stroke-dashoffset", totalLength[0])
+    //     .transition()
+    //     .duration(500)
+    //     .ease("linear")
+    //     .attr("stroke-dashoffset", 0);
 
 
 

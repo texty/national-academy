@@ -386,6 +386,9 @@ g.tick > line {
   stroke-dasharray: 3, 3;
   stroke-width: 0.3px; }
 
+@-moz-document url-prefix() {
+  g.tick > line {
+    stroke-width: 1px; } }
 #yAxisHint, #xAxisHint {
   fill: #17273c; }
 
