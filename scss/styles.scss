@@ -55,6 +55,10 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0;
+
+  @media #{$mq-mobile}, #{$mq-iPads} {
+    margin-left: 10px;
+  }
 }
 
 

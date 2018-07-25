@@ -2,6 +2,75 @@
  * Created by yevheniia on 30.06.18.
  */
 
+var age_data;
+
+
+// function retrieve_age_data(cb) {
+//     if (age_data) return cb(age_data);
+//
+//     return d3.csv("data/age.csv", function(err, data){
+//         if (err) throw err;
+//
+//         data.forEach(function (d) {
+//             d.year = parseDate(d.year);
+//             d.percent = +d.percent;
+//         });
+//
+//
+//         if (cb) return cb(age_data);
+//         return;
+//     })
+// }
+//
+//
+
+var sex_data;
+function retrieve_sex_data(cb) {
+    if (sex_data) return cb(sex_data);
+
+    return d3.csv("data/sex.csv", function(err, data){
+        if (err) throw err;
+
+        data.forEach(function (d) {
+            d.year = parseDate(d.year);
+            d.percent = +d.percent;
+        });
+
+
+        if (cb) return cb(data);
+        return;
+    })
+}
+
+
+var dot_data;
+function retrieve_dot_data(cb) {
+    if (dot_data) return cb(dot_data);
+
+    return d3.csv("data/dataset.csv", function(err, data){
+        if (err) throw err;
+
+        data.forEach(function (d) {
+            d.workers = +d.workers;
+            d.womenScientists = +d.womenScientists;
+            d.menScientists = +d.menScientists;
+            d.young = +d.young;
+            d.old = +d.old;
+        });
+
+
+        if (cb) return cb(data);
+        return;
+    })
+}
+
+
+
+
+
+
+
+
 var chartMargin = {
     top: 50,
     right: 80,
@@ -84,6 +153,8 @@ var ageChart = d3.select("#age-chart")
     .attr("id", "targetG");
 
 d3.csv("data/age.csv", function(error, data) {
+
+    // retrieve_age_data(function(chart_data){
     if (error) throw error;
 
     data.forEach(function(d) {
@@ -207,20 +278,24 @@ d3.csv("data/age.csv", function(error, data) {
 });
 
 
+
+
 function updateData() {
 
 
     var ageChart = d3.select("#agesvg").transition();
 
 
-    d3.csv("data/sex.csv", function (error, data) {
-        if (error) throw error;
+    // d3.csv("data/sex.csv", function (error, data) {
+    retrieve_sex_data(function(data){
 
-
-        data.forEach(function (d) {
-            d.year = parseDate(d.year);
-            d.percent = +d.percent;
-        });
+    // if (error) throw error;
+    //
+    //
+    //     data.forEach(function (d) {
+    //         d.year = parseDate(d.year);
+    //         d.percent = +d.percent;
+    //     });
 
         var x = d3.time.scale().range([0, chartWidth]);
 
@@ -231,6 +306,14 @@ function updateData() {
             .tickSize(-chartHeight)
             .tickPadding(10);
 
+
+        var yAxis = d3.svg.axis().scale(y)
+                .orient("left")
+                .ticks(5)
+                .tickSize(-chartWidth)
+                .tickPadding(10)
+            ;
+
         x.domain(d3.extent(data, function (d) {
             return d.year;
         }));
@@ -240,14 +323,14 @@ function updateData() {
         })]);
 
 
-        ageChart.select(".y.axis")
-            .duration(durationTime)
-            .call(yAxis);
-
         ageChart.select(".x.axis")
             .duration(durationTime)
             .call(xAxis);
 
+
+        ageChart.select(".y.axis")
+            .duration(durationTime)
+            .call(yAxis);
 
 
         // Nest the entries by symbol
@@ -357,6 +440,14 @@ function toStart () {
             .tickValues(valuesForXAxis)
             .tickSize(-chartHeight)
             .tickPadding(10);
+
+        var yAxis = d3.svg.axis().scale(y)
+                .orient("left")
+                .ticks(5)
+                .tickSize(-chartWidth)
+                .tickPadding(10)
+            ;
+
 
         x.domain(d3.extent(data, function (d) {
             return d.year;
@@ -474,3 +565,7 @@ function toStart () {
 
     
 }
+
+
+
+

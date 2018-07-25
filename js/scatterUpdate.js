@@ -1,6 +1,9 @@
 /**
  * Created by yevheniia on 02.07.18.
  */
+
+
+
 var blue = "#85a8d0";
 var pink = "#e377c2";
 var red = "#d62728";
@@ -24,15 +27,16 @@ var scatterplot = d3.select("#gender-scatter").append("svg")
     .append("g")
     .attr("transform", "translate(" + chartMargin.left + "," + chartMargin.top + ")");
 
-d3.csv("data/dataset.csv", function (error, data) {
-    if (error) throw error;
-
-
-    data.forEach(function (d) {
-        d.workers = +d.workers;
-        d.womenScientists = +d.womenScientists;
-        d.menScientists = +d.menScientists;
-    });
+// d3.csv("data/dataset.csv", function (error, data) {
+    retrieve_dot_data(function(data){
+    // if (error) throw error;
+    //
+    //
+    // data.forEach(function (d) {
+    //     d.workers = +d.workers;
+    //     d.womenScientists = +d.womenScientists;
+    //     d.menScientists = +d.menScientists;
+    // });
 
 
     var xAxis = d3.svg.axis()
@@ -98,7 +102,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         })
 
         .style("opacity", "0.5")
-        .on("mouseover", function (d) {
+        .on("mouseover touchstart", function (d) {
                var xtext = 'жінок',
                 xnumber = d.womenScientists,
                 ytext = "чоловіків",
@@ -190,17 +194,17 @@ function scatterSmall() {
     var x = d3.scale.linear()
         .range([0, chartWidth]);
 
-    d3.csv("data/dataset.csv", function (error, data) {
-        if (error) throw error;
+    // d3.csv("data/dataset.csv", function (error, data) {
+    //     if (error) throw error;
+    //
+    //
+    //     data.forEach(function (d) {
+    //         d.workers = +d.workers;
+    //         d.womenScientists = +d.womenScientists;
+    //         d.menScientists = +d.menScientists;
+    //     });
 
-
-        data.forEach(function (d) {
-            d.workers = +d.workers;
-            d.womenScientists = +d.womenScientists;
-            d.menScientists = +d.menScientists;
-        });
-
-
+    retrieve_dot_data(function(data){
         var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom")
@@ -280,15 +284,16 @@ function scatterAge() {
     var y = d3.scale.linear().range([chartHeight, 20]);
 
 
-    d3.csv("data/dataset.csv", function (error, data) {
-        if (error) throw error;
-
-
-        
-        data.forEach(function(d) {
-            d.young = +d.young;
-            d.old = +d.old;
-        });
+    // d3.csv("data/dataset.csv", function (error, data) {
+    //     if (error) throw error;
+    //
+    //
+    //
+    //     data.forEach(function(d) {
+    //         d.young = +d.young;
+    //         d.old = +d.old;
+    //     });
+    retrieve_dot_data(function(data){
 
         var xAxis = d3.svg.axis()
             .scale(x)
@@ -364,14 +369,15 @@ function scatterAgeSmall() {
     var y = d3.scale.linear().range([chartHeight, 20]);
 
 
-    d3.csv("data/dataset.csv", function (error, data) {
-        if (error) throw error;
-
-
-        data.forEach(function(d) {
-            d.young = +d.young;
-            d.old = +d.old;
-        });
+    // d3.csv("data/dataset.csv", function (error, data) {
+    //     if (error) throw error;
+    //
+    //
+    //     data.forEach(function(d) {
+    //         d.young = +d.young;
+    //         d.old = +d.old;
+    //     });
+    retrieve_dot_data(function(data){
 
         var xAxis = d3.svg.axis()
             .scale(x)

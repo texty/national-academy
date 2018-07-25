@@ -8,7 +8,7 @@ var green = "#bcbd22";
 
 var chartMargin = {
     top: 50,
-    right: 50,
+    right: 80,
     bottom: 50,
     left: 50
 };
