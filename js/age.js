@@ -2,67 +2,7 @@
  * Created by yevheniia on 30.06.18.
  */
 
-var age_data;
 
-
-function retrieve_age_data(cb) {
-    if (age_data) return cb(age_data);
-
-    return d3.csv("data/age.csv", function(err, data){
-        if (err) throw err;
-
-        data.forEach(function (d) {
-            d.year = parseDate(d.year);
-            d.percent = +d.percent;
-        });
-
-
-        if (cb) return cb(data);
-        return;
-    })
-}
-
-
-
-var sex_data;
-function retrieve_sex_data(cb) {
-    if (sex_data) return cb(sex_data);
-
-    return d3.csv("data/sex.csv", function(err, data){
-        if (err) throw err;
-
-        data.forEach(function (d) {
-            d.year = parseDate(d.year);
-            d.percent = +d.percent;
-        });
-
-
-        if (cb) return cb(data);
-        return;
-    })
-}
-
-
-var dot_data;
-function retrieve_dot_data(cb) {
-    if (dot_data) return cb(dot_data);
-
-    return d3.csv("data/dataset.csv", function(err, data){
-        if (err) throw err;
-
-        data.forEach(function (d) {
-            d.workers = +d.workers;
-            d.womenScientists = +d.womenScientists;
-            d.menScientists = +d.menScientists;
-            d.young = +d.young;
-            d.old = +d.old;
-        });
-
-
-        if (cb) return cb(data);
-        return;
-    })
-}
 
 
 

@@ -255,8 +255,8 @@
 
 
     if (screen.width >= 800) {
-        js0.src = "js/finance.js";
         js1.src = "js/age.js";
+        js0.src = "js/finance.js";
         js2.src = "js/genderScatter.js";
         js3.src = "js/scatterUpdate.js";
 
@@ -280,6 +280,99 @@
 
 
 <script>
+
+    var age_data;
+
+
+    function retrieve_age_data(cb) {
+        if (age_data) return cb(age_data);
+
+        return d3.csv("data/age.csv", function(err, data){
+            if (err) throw err;
+
+            data.forEach(function (d) {
+                d.year = parseDate(d.year);
+                d.percent = +d.percent;
+            });
+
+            age_data = data;
+            if (cb) return cb(data);
+            return;
+        })
+    }
+
+
+
+    var sex_data;
+    function retrieve_sex_data(cb) {
+        if (sex_data) return cb(sex_data);
+
+        return d3.csv("data/sex.csv", function(err, data){
+            if (err) throw err;
+
+            data.forEach(function (d) {
+                d.year = parseDate(d.year);
+                d.percent = +d.percent;
+            });
+
+            sex_data = data;
+            if (cb) return cb(data);
+            return;
+        })
+    }
+
+
+    var dot_data;
+    function retrieve_dot_data(cb) {
+        if (dot_data) return cb(dot_data);
+
+        return d3.csv("data/dataset.csv", function(err, data){
+            if (err) throw err;
+
+            data.forEach(function (d) {
+                d.workers = +d.workers;
+                d.womenScientists = +d.womenScientists;
+                d.menScientists = +d.menScientists;
+                d.young = +d.young;
+                d.old = +d.old;
+            });
+
+            dot_data = data;
+            if (cb) return cb(data);
+            return;
+        })
+    }
+
+    var finance_data;
+    function retrieve_finance_data(cb) {
+        if (finance_data) return cb(finance_data);
+
+        return d3.csv("data/nanuTotalFinancing2.csv", function(err, myData){
+            if (err) throw err;
+
+            myData.forEach(function (d) {
+                d.sum = +d.sum;
+                d.perPerson = +d.perPerson;
+            });
+
+            myData.sort(function (a, b) {
+                return d3.descending(a.perPerson, b.perPerson);
+            });
+
+
+            var data = d3.nest()
+                    .key(function (d) {
+                        return d.group
+                    })
+                    .entries(myData);
+
+            finance_data = data;
+            if (cb) return cb(data);
+            return;
+        })
+    }
+    var durationTime = 400;
+
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName("close")[0];
 
@@ -305,7 +398,7 @@
 
     eventFire(span, 'click');
 
-    var durationTime = 300;
+
 
 
     var div = d3.select("body").append("div")

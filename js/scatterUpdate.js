@@ -3,18 +3,14 @@
  */
 
 
-
 var blue = "#85a8d0";
 var pink = "#e377c2";
 var red = "#d62728";
 var green = "#bcbd22";
+
+
 function scatter() {
-
-
-
 var ageChart = d3.select("#agesvg").transition();
-
-
 
 var x = d3.scale.linear()
     .range([0, chartWidth]);

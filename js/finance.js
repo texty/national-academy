@@ -39,24 +39,25 @@ if (screen.width < 800) {
     var barPadding = 40;
 
 
-    d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
+    // d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
 
+    retrieve_finance_data(function(data){
 
-        myData.forEach(function (d) {
-            d.sum = +d.sum;
-            d.perPerson = +d.perPerson;
-        });
-
-        myData.sort(function (a, b) {
-            return d3.descending(a.perPerson, b.perPerson);
-        });
-
-
-        var data = d3.nest()
-            .key(function (d) {
-                return d.group
-            })
-            .entries(myData);
+        // myData.forEach(function (d) {
+        //     d.sum = +d.sum;
+        //     d.perPerson = +d.perPerson;
+        // });
+        //
+        // myData.sort(function (a, b) {
+        //     return d3.descending(a.perPerson, b.perPerson);
+        // });
+        //
+        //
+        // var data = d3.nest()
+        //     .key(function (d) {
+        //         return d.group
+        //     })
+        //     .entries(myData);
 
 
         var rangeBands = [];
@@ -347,23 +348,25 @@ if (screen.width < 800) {
 function totalFinance() {
     var svg = d3.select("#finance-chart").transition();
 
-    d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
-        myData.forEach(function (d) {
-            d.sum = +d.sum;
-            d.perPerson = +d.perPerson;
-        });
+    retrieve_finance_data(function(data){
 
-        myData.sort(function (a, b) {
-            return d3.descending(a.perPerson, b.perPerson);
-        });
-
-
-
-        var data = d3.nest()
-            .key(function (d) {
-                return d.group
-            })
-            .entries(myData);
+        // d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
+        // myData.forEach(function (d) {
+        //     d.sum = +d.sum;
+        //     d.perPerson = +d.perPerson;
+        // });
+        //
+        // myData.sort(function (a, b) {
+        //     return d3.descending(a.perPerson, b.perPerson);
+        // });
+        //
+        //
+        //
+        // var data = d3.nest()
+        //     .key(function (d) {
+        //         return d.group
+        //     })
+        //     .entries(myData);
 
 
         var rangeBands = [];
@@ -563,24 +566,25 @@ svg.select("#financeTitle")
 
 function perPersonFinance() {
     var svg = d3.select("#finance-chart").transition();
+    retrieve_finance_data(function(data){
 
-    d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
-        myData.forEach(function (d) {
-            d.sum = +d.sum;
-            d.perPerson = +d.perPerson;
-        });
-
-        myData.sort(function (a, b) {
-            return d3.descending(a.perPerson, b.perPerson);
-        });
-
-
-
-        var data = d3.nest()
-            .key(function (d) {
-                return d.group
-            })
-            .entries(myData);
+    // d3.csv("data/nanuTotalFinancing2.csv", function (error, myData) {
+    //     myData.forEach(function (d) {
+    //         d.sum = +d.sum;
+    //         d.perPerson = +d.perPerson;
+    //     });
+    //
+    //     myData.sort(function (a, b) {
+    //         return d3.descending(a.perPerson, b.perPerson);
+    //     });
+    //
+    //
+    //
+    //     var data = d3.nest()
+    //         .key(function (d) {
+    //             return d.group
+    //         })
+    //         .entries(myData);
 
 
         var rangeBands = [];
