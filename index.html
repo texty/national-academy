@@ -375,7 +375,7 @@
             return;
         })
     }
-    var durationTime = 400;
+    var durationTime = 100;
 
     var modal = document.getElementById('myModal');
     var span = document.getElementsByClassName("close")[0];
@@ -423,6 +423,7 @@
         if (isInView($('#step1'))) {
             toStart();
             $("#bla").css("opacity","0");
+            $(".dot").css("opacity","0");
             $("#age-chart").css("position", "relative")
 
         }
@@ -443,6 +444,7 @@
             scatter();
             $("#scatterSmall").attr("display", "block");
             $(".dot").css("opacity","0.5");
+            $(".line").css("opacity","0");
             $("#bla").css("opacity","1");
         }
         else {

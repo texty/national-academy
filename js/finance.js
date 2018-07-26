@@ -152,7 +152,7 @@ if (screen.width < 800) {
             })
             .enter().append("text")
             .attr("class", function (d) {
-                console.log(d)
+                console.log(d);
                 return 'category-label category-label-' + d.group;
             })
             .attr("transform", function (d) {
