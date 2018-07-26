@@ -313,7 +313,7 @@ d3.csv("data/sex.csv", function(error, data) {
         .attr("y", -5)
         .attr("dy", ".71em")
         .style("text-anchor", "middle")
-        .text("%");
+        .text("осіб");
 });
 
 
@@ -417,7 +417,7 @@ d3.csv("data/dataset.csv", function (error, data) {
             "translate(" + (chartWidth + 20) + " ," +
             (0) + ")")
         .style("text-anchor", "middle")
-        .text("Жінки");
+        .text("жінок");
 
     scatterplot.append("g")
         .attr("class", "y axis")
@@ -427,7 +427,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("y", -5)
         .attr("dy", ".71em")
         .style("text-anchor", "middle")
-        .text("Чоловіки");
+        .text("чоловіків");
 
 });
 
@@ -530,7 +530,7 @@ d3.csv("data/dataset.csv", function (error, data) {
             "translate(" + (chartWidth + 20) + " ," +
             (0) + ")")
         .style("text-anchor", "middle")
-        .text("Жінки");
+        .text("жінок");
 
     scatterplot.append("g")
         .attr("class", "y axis")
@@ -540,7 +540,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("y", -5)
         .attr("dy", ".71em")
         .style("text-anchor", "middle")
-        .text("Чоловіки");
+        .text("чоловіків");
 
 });
 
@@ -645,7 +645,7 @@ d3.csv("data/dataset.csv", function (error, data) {
             "translate(" + (chartWidth + 20) + " ," +
             (0) + ")")
         .style("text-anchor", "middle")
-        .text("Молоді");
+        .text("молодих");
 
     scatterplot.append("g")
         .attr("class", "y axis")
@@ -655,7 +655,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("y", -5)
         .attr("dy", ".71em")
         .style("text-anchor", "middle")
-        .text("Старі");
+        .text("старих");
 
 });
 
@@ -758,7 +758,7 @@ d3.csv("data/dataset.csv", function (error, data) {
             "translate(" + (chartWidth + 20) + " ," +
             (0) + ")")
         .style("text-anchor", "middle")
-        .text("Молоді");
+        .text("молодих");
 
     scatterplot.append("g")
         .attr("class", "y axis")
@@ -768,7 +768,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("y", -5)
         .attr("dy", ".71em")
         .style("text-anchor", "middle")
-        .text("Старі");
+        .text("старих");
 
 });
 
