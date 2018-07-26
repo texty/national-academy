@@ -147,6 +147,7 @@ body {
 .step {
   height:100vh;
 
+
   @media (max-width:800px) {
     height:auto;
   }
@@ -210,6 +211,10 @@ p {
   and (orientation: landscape) {
     font-size: 13px;
     width:100%;
+  }
+
+  @media#{$mq-iPads} {
+    font-size: 13px;
   }
 
 }
