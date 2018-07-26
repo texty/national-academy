@@ -98,7 +98,7 @@ var scatterplot = d3.select("#gender-scatter").append("svg")
         })
 
         .style("opacity", "0.5")
-        .on("mouseover touchstart", function (d) {
+        .on("mouseover", function (d) {
                var xtext = 'жінок',
                 xnumber = d.womenScientists,
                 ytext = "чоловіків",
