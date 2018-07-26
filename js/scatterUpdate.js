@@ -251,7 +251,8 @@ function scatterSmall() {
                     return pink
                 }
             });
-        
+
+ageChart.selectAll(".line").transition().duration(10).style("opacity","0");
 ageChart.select("#yAxisHint").duration(durationTime).text("чоловіків");
 ageChart.select("#xAxisHint").duration(durationTime).text("жінок");
         
@@ -334,7 +335,7 @@ function scatterAge() {
 
 
 
-
+        ageChart.selectAll(".line").transition().duration(10).style("opacity","0");
         ageChart.select("#yAxisHint").duration(durationTime).text("від 50 років");
         ageChart.select("#xAxisHint").duration(durationTime).text(" до 50 років");
 
@@ -418,7 +419,7 @@ function scatterAgeSmall() {
 
 
 
-
+        ageChart.selectAll(".line").transition().duration(10).style("opacity","0");
         ageChart.select("#yAxisHint").duration(durationTime).text("від 50 років");
         ageChart.select("#xAxisHint").duration(durationTime).text("до 50 років");
 
