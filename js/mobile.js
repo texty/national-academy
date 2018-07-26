@@ -645,7 +645,7 @@ d3.csv("data/dataset.csv", function (error, data) {
             "translate(" + (chartWidth + 20) + " ," +
             (0) + ")")
         .style("text-anchor", "middle")
-        .text("Жінки");
+        .text("Молоді");
 
     scatterplot.append("g")
         .attr("class", "y axis")
@@ -655,7 +655,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("y", -5)
         .attr("dy", ".71em")
         .style("text-anchor", "middle")
-        .text("Чоловіки");
+        .text("Старі");
 
 });
 
@@ -758,7 +758,7 @@ d3.csv("data/dataset.csv", function (error, data) {
             "translate(" + (chartWidth + 20) + " ," +
             (0) + ")")
         .style("text-anchor", "middle")
-        .text("Жінки");
+        .text("Молоді");
 
     scatterplot.append("g")
         .attr("class", "y axis")
@@ -768,7 +768,7 @@ d3.csv("data/dataset.csv", function (error, data) {
         .attr("y", -5)
         .attr("dy", ".71em")
         .style("text-anchor", "middle")
-        .text("Чоловіки");
+        .text("Старі");
 
 });
 
