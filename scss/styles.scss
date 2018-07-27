@@ -148,18 +148,18 @@ body {
 }
 
 #financeChartsContainer {
-  width:90%;
+  width:80%;
   margin:0 0 0 10%;
   display:none;
 
   @media (min-width:1200px) {
     grid-template-columns: 100%;
-    width:70%;
+    width:80%;
     margin:0 auto;
   }
 
   @media (min-width:1824px) {
-    width: 50%;
+    width: 80%;
     margin:0 0 0 10%;
   }
 
