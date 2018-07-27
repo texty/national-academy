@@ -10,7 +10,10 @@
 .social-icons {
   grid-column: 3/4;
   display: grid;
-  grid-template-columns: 40px 40px; }
+  grid-template-columns: 40px 40px;
+  position: fixed;
+  right: 5px;
+  top: 5px; }
 
 .facebook {
   width: 30px;
