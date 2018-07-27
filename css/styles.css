@@ -332,7 +332,7 @@ p {
       font-size: 13px; } }
 
 .step > p {
-  width: 80%; }
+  width: 90%; }
   @media (max-width: 800px) {
     .step > p {
       width: 100%; } }
