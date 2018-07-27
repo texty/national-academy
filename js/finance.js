@@ -117,7 +117,7 @@ if (screen.width < 800) {
 
         var svg = d3.select("div#insert").append("svg")//.modal-content
             .attr("id", "finance-chart")
-            .attr("width", width - margin.left - margin.right)
+            .attr("width", width)
             .attr("height", height + margin.top + margin.bottom)
             //                .style('background-color', '#EFEFEF')
             .append("g")

@@ -434,6 +434,12 @@
         }
     });
 
+    $(window).scroll(function () {
+        if (isInView($('#head'))) {
+            $("#age-chart").css("position", "relative")
+        }
+    });
+
 
     $(window).scroll(function () {
         if (isInView($('#step2'))) {
