@@ -248,11 +248,14 @@ body {
       margin: 0 5% 0 5%; } }
 
 #transition-div {
-  height: 60vh; }
+  height: 40vh; }
   @media (min-width: 320px) and (max-width: 480px) {
     #transition-div {
       display: none; } }
 
+@-moz-document url-prefix() {
+  #transition-div {
+    height: 60vh; } }
 #financeChartsContainer {
   width: 80%;
   margin: 0 0 0 10%;
