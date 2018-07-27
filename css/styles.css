@@ -29,14 +29,13 @@ a:visited {
 
 .read-more {
   grid-column: 1 / -1;
-  grid-row: 4 / 5;
   display: grid;
   grid-template-columns: auto 1fr 1fr 1fr auto;
-  grid-template-rows: auto auto;
+  grid-template-rows: 50px auto;
   grid-gap: 3rem; }
 
 .read-text {
-  grid-column: 3 / 4;
+  grid-column: 1 / 6;
   grid-row: 1 / 2;
   text-align: center; }
 
@@ -175,6 +174,61 @@ body {
     body {
       margin-left: 10px; } }
 
+#head {
+  display: grid;
+  grid-template-columns: auto minmax(50px, 100px) 50%;
+  grid-template-rows: 100vh auto; }
+  @media (min-width: 1825px) {
+    #head {
+      grid-template-columns: auto 150px  50%; } }
+
+#title {
+  margin-top: 23vh;
+  font-size: 55px;
+  line-height: 1.3;
+  grid-column: 3/4;
+  grid-row: 1/2;
+  text-transform: uppercase;
+  font-weight: 300; }
+  @media (min-width: 320px) and (max-width: 480px) {
+    #title {
+      font-size: 25px;
+      line-height: 1.6;
+      margin-top: 35vh; } }
+  @media (min-width: 1825px) {
+    #title {
+      font-size: 70px; } }
+
+#cane {
+  margin-left: -10%;
+  margin-top: 20vh;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  width: 180%; }
+  @media (min-width: 320px) and (max-width: 480px) {
+    #cane {
+      margin-top: 30vh; } }
+
+#subtitle {
+  margin-top: 25vh;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  text-align: right;
+  font-size: 30px;
+  line-height: 1.3;
+  font-weight: 300; }
+  @media (min-width: 320px) and (max-width: 480px) {
+    #subtitle {
+      font-size: 18px;
+      margin-top: 35vh; } }
+  @media (min-width: 1825px) {
+    #subtitle {
+      font-size: 40px; } }
+
+#lead {
+  grid-column: 1/4;
+  grid-row: 2/3; }
+
 .content {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -194,6 +248,9 @@ body {
 
 #transition-div {
   height: 60vh; }
+  @media (min-width: 320px) and (max-width: 480px) {
+    #transition-div {
+      display: none; } }
 
 #financeChartsContainer {
   width: 90%;
@@ -231,16 +288,12 @@ body {
       height: auto; } }
 
 h1 {
-  font-size: 40px;
   width: 100%;
   margin: 0 auto;
-  text-align: center;
   margin-bottom: 20px;
   margin-top: 50px;
-  font-weight: 600; }
-  @media (min-width: 1824px) {
-    h1 {
-      font-size: 43px; } }
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0; }
 
 h2 {
   font-size: 20px;
