@@ -127,7 +127,16 @@ if (screen.width < 800) {
             .attr("class", "y axis")
             .call(yAxis)
             .append("text")
-            .attr("y", 80)
+            .attr("y", function() {
+                if(screen.width > 800) {
+                    return 80
+                }
+                else if(screen.width < 800) {
+                    return 0
+                }
+
+            })
+            .attr("x", 10)
             .attr("dy", ".71em")
             .style("text-anchor", "end")
             .text("тис. грн");
