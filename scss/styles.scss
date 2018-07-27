@@ -32,23 +32,7 @@ $textcolor: #fffceb;
 }
 
 body {
-
-  //font-family: 'Ubuntu', sans-serif;
-  //font-family: 'Rubik', sans-serif;
-  //font-family: 'EB Garamond', serif; // дрібновато
-  //font-family: 'Alegreya Sans', sans-serif;
-  //font-family: 'Cormorant Garamond', serif;
-  //font-family: 'PT Mono', monospace;
-  //font-family: 'Poiret One', cursive;
-  //font-family: 'Roboto', sans-serif; // непогано
-  //font-family: 'Open Sans', sans-serif; // непогано
-  //font-family: 'Source Sans Pro', sans-serif; // дрібновато у світлому
-  //font-family: 'Exo 2', sans-serif; //як варіант в темному
   font-family: 'Play', sans-serif; // непогано
-  //font-family: 'PT Sans Caption', sans-serif; // непогано
-  //font-family: 'Jura', sans-serif; //скоріше ні, ніж так
-  //font-family: 'Marmelad', sans-serif;// бє
-  //font-family: 'IBM Plex Sans', sans-serif; //ні про що
   font-size: 10px;
   color: $background;
   background-color: $textcolor;
@@ -56,17 +40,18 @@ body {
   margin: 0;
   padding: 0;
 
-  @media #{$mq-mobile}, #{$mq-iPads} {
-    margin-left: 10px;
-  }
 }
 
 #head {
   display:grid;
-  grid-template-columns:  auto minmax(50px, 100px)  50%;
+  grid-template-columns:  auto 100px  auto;
   grid-template-rows: 100vh auto;
+  @media #{$mq-mobile} {
+    grid-template-columns:  30% 20% 50%;
+  }
+
   @media #{$mq-large} {
-    grid-template-columns:  auto 150px  50%;
+    grid-template-columns:  auto 130px  50%;
   }
 
 
@@ -82,7 +67,7 @@ body {
   font-weight: 300;
 
   @media #{$mq-mobile} {
-    font-size: 25px;
+    font-size: 22px;
     line-height: 1.6;
     margin-top: 35vh;
   }
@@ -101,7 +86,8 @@ body {
 
   @media #{$mq-mobile} {
 
-    margin-top: 30vh;
+    margin-top: 33vh;
+    width:150%;
   }
 
 }
@@ -116,7 +102,7 @@ body {
   font-weight: 300;
 
   @media #{$mq-mobile} {
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 35vh;
 
   }
@@ -135,11 +121,8 @@ body {
 .content {
   display:grid;
   grid-template-columns: 40% 60%;
-  //position:sticky;
-  //top:0;
-  //left:0;
-  width:90%;
-  margin:0 0 0 10%;
+  width:80%;
+  margin:0 10% 0 10%;
 
   @media (min-width:1824px) {
     display:grid;
@@ -152,7 +135,7 @@ body {
   @media (max-width:800px) {
     grid-template-columns: 100%;
     width:90%;
-    margin:0 0;
+    margin:0 5% 0 5%;
   }
 }
 
@@ -166,7 +149,7 @@ body {
 
 #financeChartsContainer {
   width:90%;
-  margin:0 auto;
+  margin:0 0 0 10%;
   display:none;
 
   @media (min-width:1200px) {
@@ -177,13 +160,13 @@ body {
 
   @media (min-width:1824px) {
     width: 50%;
-    margin: 0 auto;
+    margin:0 0 0 10%;
   }
 
   @media (max-width:800px) {
     grid-template-columns: 100%;
     width:90%;
-    margin:0 0;
+    margin:0 0 0 5%;
     display:block;
   }
 }

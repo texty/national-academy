@@ -170,17 +170,17 @@ body {
   line-height: 1.6;
   margin: 0;
   padding: 0; }
-  @media (min-width: 320px) and (max-width: 480px), (min-width: 768px) and (max-width: 1024px) {
-    body {
-      margin-left: 10px; } }
 
 #head {
   display: grid;
-  grid-template-columns: auto minmax(50px, 100px) 50%;
+  grid-template-columns: auto 100px  auto;
   grid-template-rows: 100vh auto; }
+  @media (min-width: 320px) and (max-width: 480px) {
+    #head {
+      grid-template-columns: 30% 20% 50%; } }
   @media (min-width: 1825px) {
     #head {
-      grid-template-columns: auto 150px  50%; } }
+      grid-template-columns: auto 130px  50%; } }
 
 #title {
   margin-top: 23vh;
@@ -192,7 +192,7 @@ body {
   font-weight: 300; }
   @media (min-width: 320px) and (max-width: 480px) {
     #title {
-      font-size: 25px;
+      font-size: 22px;
       line-height: 1.6;
       margin-top: 35vh; } }
   @media (min-width: 1825px) {
@@ -207,7 +207,8 @@ body {
   width: 180%; }
   @media (min-width: 320px) and (max-width: 480px) {
     #cane {
-      margin-top: 30vh; } }
+      margin-top: 33vh;
+      width: 150%; } }
 
 #subtitle {
   margin-top: 25vh;
@@ -219,7 +220,7 @@ body {
   font-weight: 300; }
   @media (min-width: 320px) and (max-width: 480px) {
     #subtitle {
-      font-size: 18px;
+      font-size: 16px;
       margin-top: 35vh; } }
   @media (min-width: 1825px) {
     #subtitle {
@@ -232,8 +233,8 @@ body {
 .content {
   display: grid;
   grid-template-columns: 40% 60%;
-  width: 90%;
-  margin: 0 0 0 10%; }
+  width: 80%;
+  margin: 0 10% 0 10%; }
   @media (min-width: 1824px) {
     .content {
       display: grid;
@@ -244,7 +245,7 @@ body {
     .content {
       grid-template-columns: 100%;
       width: 90%;
-      margin: 0 0; } }
+      margin: 0 5% 0 5%; } }
 
 #transition-div {
   height: 60vh; }
@@ -254,7 +255,7 @@ body {
 
 #financeChartsContainer {
   width: 90%;
-  margin: 0 auto;
+  margin: 0 0 0 10%;
   display: none; }
   @media (min-width: 1200px) {
     #financeChartsContainer {
@@ -264,12 +265,12 @@ body {
   @media (min-width: 1824px) {
     #financeChartsContainer {
       width: 50%;
-      margin: 0 auto; } }
+      margin: 0 0 0 10%; } }
   @media (max-width: 800px) {
     #financeChartsContainer {
       grid-template-columns: 100%;
       width: 90%;
-      margin: 0 0;
+      margin: 0 0 0 5%;
       display: block; } }
 
 #scroll {
