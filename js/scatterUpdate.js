@@ -116,14 +116,14 @@ var scatterplot = d3.select("#gender-scatter").append("svg")
 
                 div.html(d.name + "<br>" + "<span id='genderspan'> " + xtext + ": " + xnumber + "; " + ytext + ": " + ynumber)
                     .style("left", (d3.event.pageX) + 10 + "px")
-                    .style("top", (d3.event.pageY) - 100 + "px")
+                    .style("top", (d3.event.pageY) + "px")
             }
 
             if (isInView($('#step5')) || isInView($('#step6'))) {
 
                 div.html(d.name + "<br>" + "<span id='agespan'>" + xtext2 + ": " + xnumber2 + "; " + ytext2 + ": " + ynumber2 + "</span>")
                     .style("left", (d3.event.pageX) + 10 + "px")
-                    .style("top", (d3.event.pageY) - 100 + "px")
+                    .style("top", (d3.event.pageY) + "px")
             }
 
 
@@ -145,6 +145,7 @@ var scatterplot = d3.select("#gender-scatter").append("svg")
         .attr("cy", function (d) {
             return y(d.menScientists);
         })
+        .attr("display", 'block')
         .style("fill", function(t) {
             t.womenScientists = +t.womenScientists;
             t.menScientists = +t.menScientists;
@@ -237,6 +238,16 @@ function scatterSmall() {
             .attr("cy", function (d) {
                 return y(d.menScientists);
             })
+            .attr("display", function (t) {
+                t.womenScientists = +t.womenScientists;
+                t.menScientists = +t.menScientists;
+                if (t.menScientists > 100 || t.womenScientists > 100 ) {
+                    return "none";
+                }
+                else {
+                    return 'block'
+                }
+            })
             .style("fill", function(t) {
                 t.womenScientists = +t.womenScientists;
                 t.menScientists = +t.menScientists;
@@ -317,6 +328,7 @@ function scatterAge() {
             .attr("cy", function (k) {
                 return y(k.old);
             })
+            .attr("display", 'block')
             .style("fill", function (t) {
                 t.young = +t.young;
                 t.old = +t.old;
@@ -372,6 +384,9 @@ function scatterAgeSmall() {
     //         d.young = +d.young;
     //         d.old = +d.old;
     //     });
+    //
+    //     // data.filter(function(d) {
+    //     //     return d.old < 50 });
     retrieve_dot_data(function(data){
 
         var xAxis = d3.svg.axis()
@@ -398,7 +413,17 @@ function scatterAgeSmall() {
                 return x(k.young);
             })
             .attr("cy", function (k) {
-                return y(k.old);
+                    return y(k.old);
+            })
+            .attr("display", function (t) {
+            t.young = +t.young;
+            t.old = +t.old;
+            if (t.old > 140 || t.young > 140 ) {
+                return "none";
+            }
+            else {
+                return 'block'
+            }
             })
             .style("fill", function (t) {
                 t.young = +t.young;
@@ -409,7 +434,8 @@ function scatterAgeSmall() {
                 else {
                     return red
                 }
-            });
+            })
+            ;
 
 
 
